@@ -1,5 +1,5 @@
 // Security utilities for edge function communication
-export const EDGE_FUNCTION_SECRET = 'your-secure-random-secret-key-change-in-production';
+export const EDGE_FUNCTION_SECRET = process.env.EDGE_FUNCTION_SECRET || 'your-secure-random-secret-key-change-in-production';
 
 export const createSecureHeaders = () => ({
   'x-security-token': EDGE_FUNCTION_SECRET,
