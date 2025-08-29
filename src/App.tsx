@@ -1,41 +1,56 @@
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Suspense } from "react-router-dom";
+import { lazy } from "react";
 import ErrorBoundary from "./components/ErrorBoundary";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Index from "./pages/Index";
-import OurApproach from "./pages/OurApproach";
-import About from "./pages/About";
-import FoundingClients from "./pages/FoundingClients";
-import Apply from "./pages/Apply";
-import BookDiscovery from "./pages/BookDiscovery";
-import Auth from "./pages/Auth";
-import Admin from "./pages/Admin";
-import NotFound from "./pages/NotFound";
+import { ThemeProvider } from "./components/ThemeProvider";
+
+// Lazy load pages for better performance
+const Index = lazy(() => import("./pages/Index"));
+const OurApproach = lazy(() => import("./pages/OurApproach"));
+const About = lazy(() => import("./pages/About"));
+const FoundingClients = lazy(() => import("./pages/FoundingClients"));
+const Apply = lazy(() => import("./pages/Apply"));
+const BookDiscovery = lazy(() => import("./pages/BookDiscovery"));
+const Auth = lazy(() => import("./pages/Auth"));
+const Admin = lazy(() => import("./pages/Admin"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 const queryClient = new QueryClient();
+
+// Loading component for Suspense fallback
+const LoadingSpinner = () => (
+  <div className="flex items-center justify-center min-h-screen">
+    <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-primary"></div>
+  </div>
+);
 
 const App = () => (
   <ErrorBoundary>
     <QueryClientProvider client={queryClient}>
-      <TooltipProvider>
-        <Toaster />
-        <BrowserRouter>
-          <Routes>
-            <Route path="/" element={<Index />} />
-            <Route path="/our-approach" element={<OurApproach />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/founding-clients" element={<FoundingClients />} />
-            <Route path="/apply" element={<Apply />} />
-            <Route path="/book-discovery" element={<BookDiscovery />} />
-            <Route path="/auth" element={<Auth />} />
-            <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
-            {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-        </BrowserRouter>
-      </TooltipProvider>
+      <ThemeProvider>
+        <TooltipProvider>
+          <Toaster />
+          <BrowserRouter>
+            <Suspense fallback={<LoadingSpinner />}>
+              <Routes>
+                <Route path="/" element={<Index />} />
+                <Route path="/our-approach" element={<OurApproach />} />
+                <Route path="/about" element={<About />} />
+                <Route path="/founding-clients" element={<FoundingClients />} />
+                <Route path="/apply" element={<Apply />} />
+                <Route path="/book-discovery" element={<BookDiscovery />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
+                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+        </TooltipProvider>
+      </ThemeProvider>
     </QueryClientProvider>
   </ErrorBoundary>
 );

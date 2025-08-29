@@ -3,6 +3,7 @@ import { Card } from "@/components/ui/card";
 import { Heart, Users, MessageCircle, Shield, ArrowRight, Star, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import heroCouple from "@/assets/hero-couple.jpg";
 import lifestyleWomanAA from "@/assets/lifestyle-woman-aa.jpg";
 import lifestyleMan from "@/assets/lifestyle-man.jpg";
@@ -26,6 +27,7 @@ const Index = () => {
               <Link to="/founding-clients" className="text-muted-foreground hover:text-primary transition-colors">Founding Clients</Link>
             </div>
             <div className="flex items-center gap-4">
+              <ThemeToggle />
               {user ? (
                 <>
                   <span className="text-sm text-muted-foreground hidden sm:block">
@@ -78,6 +80,7 @@ const Index = () => {
                 src={heroCouple}
                 alt="Sophisticated couple having an intimate conversation"
                 className="rounded-2xl shadow-elegant w-full h-[600px] object-cover"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
@@ -104,6 +107,7 @@ const Index = () => {
                 src={lifestyleWomanAA}
                 alt="Sophisticated African American woman reading by window"
                 className="rounded-2xl shadow-elegant w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-2xl"></div>
               <div className="absolute bottom-8 left-8 text-white">
@@ -117,6 +121,7 @@ const Index = () => {
                 src={lifestyleMan}
                 alt="Sophisticated man at art gallery"
                 className="rounded-2xl shadow-elegant w-full h-[500px] object-cover group-hover:scale-105 transition-transform duration-500"
+                loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent rounded-2xl"></div>
               <div className="absolute bottom-8 left-8 text-white">
@@ -291,6 +296,7 @@ const Index = () => {
                 src={professionalBlondeWoman}
                 alt="Professional blonde woman representing modern love philosophy"
                 className="rounded-2xl shadow-elegant w-full h-[500px] object-cover"
+                loading="lazy"
               />
             </div>
           </div>

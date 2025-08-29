@@ -43,6 +43,8 @@ const About = () => {
                 src={indianWomanConservative}
                 alt="Conservative professional Indian woman representing Found & Aligned founder"
                 className="rounded-2xl shadow-elegant w-full h-[600px] object-cover"
+                loading="lazy"
+                fetchPriority="high"
               />
               <div className="absolute inset-0 rounded-2xl bg-gradient-to-t from-black/20 to-transparent"></div>
             </div>
