@@ -1,10 +1,17 @@
 // Security utilities for edge function communication
-export const EDGE_FUNCTION_SECRET = process.env.EDGE_FUNCTION_SECRET || 'your-secure-random-secret-key-change-in-production';
-
-export const createSecureHeaders = () => ({
-  'x-security-token': EDGE_FUNCTION_SECRET,
+export const createSecureHeaders = async (turnstileToken?: string) => ({
+  'x-turnstile-token': turnstileToken || '',
   'Content-Type': 'application/json',
 });
+
+// CAPTCHA token management
+let turnstileToken: string | null = null;
+
+export const setTurnstileToken = (token: string) => {
+  turnstileToken = token;
+};
+
+export const getTurnstileToken = () => turnstileToken;
 
 // Client-side rate limiting
 const requestTracker = new Map<string, { count: number; resetTime: number }>();

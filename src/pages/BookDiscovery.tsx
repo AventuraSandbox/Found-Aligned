@@ -13,7 +13,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { discoveryCallSchema, type DiscoveryCallFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
-import { createSecureHeaders, checkClientRateLimit } from "@/lib/security";
+import { createSecureHeaders, checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
 // Use the validated interface from validation.ts
 
@@ -76,12 +77,22 @@ const BookDiscovery = () => {
 
       // Send notification email
       try {
+        const turnstileToken = getTurnstileToken();
+        if (!turnstileToken) {
+          toast({
+            variant: "destructive",
+            title: "Verification Required",
+            description: "Please complete the CAPTCHA verification.",
+          });
+          return;
+        }
+
         await supabase.functions.invoke('send-discovery-call-notification', {
           body: {
             callId: callData.id,
             callData: sanitizedData
           },
-          headers: createSecureHeaders(),
+          headers: await createSecureHeaders(turnstileToken),
         });
       } catch (emailError) {
         console.error('Failed to send notification email:', emailError);
@@ -355,6 +366,18 @@ const BookDiscovery = () => {
                   placeholder="Any specific questions you'd like to discuss during our conversation?"
                   className="mt-2 min-h-[80px]"
                 />
+              </div>
+
+              {/* CAPTCHA Verification */}
+              <div className="space-y-4">
+                <Label className="text-base font-medium">Security Verification *</Label>
+                <TurnstileCaptcha 
+                  onVerify={(token) => console.log('CAPTCHA verified:', token)}
+                  onError={(error) => console.error('CAPTCHA error:', error)}
+                />
+                <p className="text-sm text-muted-foreground">
+                  Please complete the verification to submit your request.
+                </p>
               </div>
 
               <div className="text-center pt-6">

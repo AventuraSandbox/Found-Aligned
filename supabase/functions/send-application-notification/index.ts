@@ -5,8 +5,8 @@ const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
 const SECURITY_SECRET = Deno.env.get("EDGE_FUNCTION_SECRET");
 
 const corsHeaders = {
-  "Access-Control-Allow-Origin": "*",
-  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-security-token",
+  "Access-Control-Allow-Origin": "https://foundandaligned.com",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type, x-turnstile-token",
   'Content-Security-Policy': "default-src 'self'; script-src 'self'",
   'X-Content-Type-Options': 'nosniff',
   'X-Frame-Options': 'DENY',
@@ -65,16 +65,39 @@ const handler = async (req: Request): Promise<Response> => {
   }
 
   try {
-    // Security: Verify request signature
-    const securityToken = req.headers.get('x-security-token');
-    if (!securityToken || securityToken !== SECURITY_SECRET) {
-      console.warn('Unauthorized access attempt:', {
+    // Security: Verify CAPTCHA token
+    const turnstileToken = req.headers.get('x-turnstile-token');
+    if (!turnstileToken) {
+      console.warn('Missing CAPTCHA token:', {
         ip: req.headers.get('cf-connecting-ip') || 'unknown',
         userAgent: req.headers.get('user-agent'),
         timestamp: new Date().toISOString()
       });
-      return new Response(JSON.stringify({ error: 'Unauthorized' }), {
-        status: 401,
+      return new Response(JSON.stringify({ error: 'CAPTCHA verification required' }), {
+        status: 400,
+        headers: { ...corsHeaders, 'Content-Type': 'application/json' }
+      });
+    }
+
+    // Verify CAPTCHA with Cloudflare Turnstile
+    const form = new FormData();
+    form.append('secret', Deno.env.get("TURNSTILE_SECRET_KEY") || '');
+    form.append('response', turnstileToken);
+    
+    const verifyResponse = await fetch("https://challenges.cloudflare.com/turnstile/v0/siteverify", {
+      method: "POST",
+      body: form
+    });
+    
+    const verifyResult = await verifyResponse.json();
+    if (!verifyResult.success) {
+      console.warn('CAPTCHA verification failed:', {
+        ip: req.headers.get('cf-connecting-ip') || 'unknown',
+        timestamp: new Date().toISOString(),
+        errors: verifyResult['error-codes']
+      });
+      return new Response(JSON.stringify({ error: 'CAPTCHA verification failed' }), {
+        status: 400,
         headers: { ...corsHeaders, 'Content-Type': 'application/json' }
       });
     }
