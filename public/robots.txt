@@ -1,19 +1,7 @@
 User-agent: *
 Allow: /
 
-# Disallow admin and private areas
-Disallow: /admin/
-Disallow: /auth/
+# Don't let bots crawl admin
+Disallow: /admin
 
-# Allow important pages
-Allow: /about
-Allow: /our-approach
-Allow: /founding-clients
-Allow: /apply
-Allow: /book-discovery
-
-# Sitemap location
 Sitemap: https://foundandaligned.com/sitemap.xml
-
-# Crawl delay (optional)
-Crawl-delay: 1
