@@ -1,9 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Heart, Users, MessageCircle, Shield, ArrowRight, Star, CheckCircle } from "lucide-react";
+import { Heart, Users, MessageCircle, Shield, ArrowRight, Star, CheckCircle, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import { HERO, VALUE_PROPS } from "@/lib/faContent";
 import heroCouple from "@/assets/hero-couple.jpg";
 import lifestyleWomanAA from "@/assets/lifestyle-woman-aa.jpg";
 import lifestyleMan from "@/assets/lifestyle-man.jpg";
@@ -24,7 +25,8 @@ const Index = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/founding-clients" className="text-muted-foreground hover:text-primary transition-colors">Founding Clients</Link>
+              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
@@ -57,21 +59,24 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-center lg:text-left">
+              <p className="uppercase tracking-wide text-sm text-muted-foreground mb-2">
+                {HERO.eyebrow}
+              </p>
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
-                Love, Found & Aligned.
+                {HERO.headline}
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground mb-8 leading-relaxed max-w-lg mx-auto lg:mx-0">
-                For people who are done settling. We help you find the relationship that fits your life—and your values.
+                {HERO.subhead}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <Button variant="hero" size="xl" asChild>
-                  <Link to="/apply">
-                    Apply to Work With Us
+                  <Link to={HERO.ctaPrimary.href}>
+                    {HERO.ctaPrimary.label}
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
                 </Button>
                 <Button variant="outline" size="xl" asChild>
-                  <Link to="/book-discovery">Book Discovery Call</Link>
+                  <Link to={HERO.ctaSecondary.href}>{HERO.ctaSecondary.label}</Link>
                 </Button>
               </div>
             </div>
@@ -96,8 +101,8 @@ const Index = () => {
               Who We Serve
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              You've built a full life. Now you're ready for love that fits it. Our clients are emotionally intelligent, 
-              self-aware, and selective. We serve people ready to invest time, energy, and care into finding the right match.
+              Accomplished professionals 45+ who've built successful lives and are ready for love that complements—not completes—who they already are. 
+              Our clients understand that finding the right person is an investment worth making.
             </p>
           </div>
           
@@ -133,8 +138,40 @@ const Index = () => {
         </div>
       </section>
 
+      {/* Value Propositions */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <div className="text-center mb-16">
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
+              Why Choose Found & Aligned
+            </h2>
+            <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
+              We understand the unique challenges and opportunities of dating at 45+.
+            </p>
+          </div>
+          
+          <div className="grid md:grid-cols-3 gap-8">
+            {VALUE_PROPS.map((prop, index) => (
+              <Card key={index} className="p-8 text-center border-0 shadow-elegant bg-card/50 backdrop-blur-sm hover:shadow-xl transition-all duration-300">
+                <div className="w-16 h-16 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-6">
+                  {index === 0 && <Heart className="h-8 w-8 text-primary" />}
+                  {index === 1 && <Users className="h-8 w-8 text-primary" />}
+                  {index === 2 && <Shield className="h-8 w-8 text-primary" />}
+                </div>
+                <h3 className="font-serif text-xl font-semibold mb-4 text-primary">
+                  {prop.title}
+                </h3>
+                <p className="text-muted-foreground leading-relaxed">
+                  {prop.text}
+                </p>
+              </Card>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* Our Approach */}
-      <section id="approach" className="py-16 lg:py-24">
+      <section id="approach" className="py-16 lg:py-24 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">

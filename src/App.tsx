@@ -11,7 +11,8 @@ import { ThemeProvider } from "./components/ThemeProvider";
 const Index = lazy(() => import("./pages/Index"));
 const OurApproach = lazy(() => import("./pages/OurApproach"));
 const About = lazy(() => import("./pages/About"));
-const FoundingClients = lazy(() => import("./pages/FoundingClients"));
+const Pricing = lazy(() => import("./pages/Pricing"));
+const Programs = lazy(() => import("./pages/Programs"));
 const Apply = lazy(() => import("./pages/Apply"));
 const BookDiscovery = lazy(() => import("./pages/BookDiscovery"));
 const Auth = lazy(() => import("./pages/Auth"));
@@ -39,7 +40,8 @@ const App = () => (
                 <Route path="/" element={<Index />} />
                 <Route path="/our-approach" element={<OurApproach />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/founding-clients" element={<FoundingClients />} />
+                <Route path="/pricing" element={<Pricing />} />
+                <Route path="/programs" element={<Programs />} />
                 <Route path="/apply" element={<Apply />} />
                 <Route path="/book-discovery" element={<BookDiscovery />} />
                 <Route path="/auth" element={<Auth />} />

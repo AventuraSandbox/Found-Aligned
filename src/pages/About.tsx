@@ -16,7 +16,8 @@ const About = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-primary font-medium">About</Link>
-              <Link to="/founding-clients" className="text-muted-foreground hover:text-primary transition-colors">Founding Clients</Link>
+              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/apply">Apply Now</Link>
@@ -34,8 +35,9 @@ const About = () => {
                 About Found & Aligned
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Born from the belief that alignment is the new chemistry, and that finding the right person 
-                requires more than algorithms—it requires human insight, emotional intelligence, and genuine care.
+                Born from the belief that life's second chapter deserves a first-class love story. We specialize in helping 
+                accomplished professionals 45+ find relationships that fit their lives, values, and vision—through human insight, 
+                not algorithms.
               </p>
             </div>
             <div className="relative">
