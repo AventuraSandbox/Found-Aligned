@@ -2,7 +2,8 @@ import { serve } from "https://deno.land/std@0.190.0/http/server.ts";
 import { Resend } from "npm:resend@2.0.0";
 
 const resend = new Resend(Deno.env.get("RESEND_API_KEY"));
-const SECURITY_SECRET = Deno.env.get("EDGE_FUNCTION_SECRET");
+const TURNSTILE_SECRET_KEY = Deno.env.get("TURNSTILE_SECRET_KEY");
+const TURNSTILE_VERIFY_URL = "https://challenges.cloudflare.com/turnstile/v0/siteverify";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "https://foundandaligned.com",
