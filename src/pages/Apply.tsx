@@ -15,6 +15,7 @@ import { useState, useEffect } from "react";
 import { applicationFormSchema, type ApplicationFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
 import { createSecureHeaders, checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import { RATE_LIMIT_CONFIG } from "@/lib/constants";
 import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
 // Use the validated interface from validation.ts
@@ -37,7 +38,7 @@ const Apply = () => {
   const onSubmit = async (data: ApplicationFormData) => {
     try {
       // Client-side rate limiting
-      if (checkClientRateLimit('application_submit', 2, 300000)) { // 2 requests per 5 minutes
+      if (checkClientRateLimit('application_submit', RATE_LIMIT_CONFIG.APPLICATION_MAX_REQUESTS, RATE_LIMIT_CONFIG.APPLICATION_WINDOW_MS)) {
         toast({
           variant: "destructive",
           title: "Rate Limit Exceeded",
@@ -121,8 +122,8 @@ const Apply = () => {
           headers: await createSecureHeaders(turnstileToken),
         });
       } catch (emailError) {
-        console.error('Failed to send notification email:', emailError);
-        // Don't fail the submission if email fails
+        // Log error but don't fail the submission if email notification fails
+        handleError(emailError, 'notification email');
       }
 
       toast({

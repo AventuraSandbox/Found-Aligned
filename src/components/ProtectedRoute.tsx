@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Navigate } from "react-router-dom";
 import { supabase } from "@/integrations/supabase/client";
+import { handleError } from "@/lib/errorHandler";
 
 interface ProtectedRouteProps {
   children: JSX.Element;
@@ -32,13 +33,13 @@ export default function ProtectedRoute({
         const { data: roleData, error: roleError } = await supabase.rpc('get_current_user_role');
         
         if (roleError) {
-          console.error('Error checking user role:', roleError);
+          handleError(roleError, 'user role check');
           setAllowed(false);
         } else {
           setAllowed(roleData === role);
         }
       } catch (error) {
-        console.error('Error in ProtectedRoute:', error);
+        handleError(error, 'ProtectedRoute access check');
         setAllowed(false);
       } finally {
         setLoading(false);

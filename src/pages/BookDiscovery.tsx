@@ -14,6 +14,7 @@ import { useState } from "react";
 import { discoveryCallSchema, type DiscoveryCallFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
 import { createSecureHeaders, checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import { RATE_LIMIT_CONFIG } from "@/lib/constants";
 import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
 // Use the validated interface from validation.ts
@@ -27,7 +28,7 @@ const BookDiscovery = () => {
   const onSubmit = async (data: DiscoveryCallFormData) => {
     try {
       // Client-side rate limiting
-      if (checkClientRateLimit('discovery_call_submit', 3, 300000)) { // 3 requests per 5 minutes
+      if (checkClientRateLimit('discovery_call_submit', RATE_LIMIT_CONFIG.DISCOVERY_CALL_MAX_REQUESTS, RATE_LIMIT_CONFIG.DISCOVERY_CALL_WINDOW_MS)) {
         toast({
           variant: "destructive",
           title: "Rate Limit Exceeded",
@@ -95,8 +96,8 @@ const BookDiscovery = () => {
           headers: await createSecureHeaders(turnstileToken),
         });
       } catch (emailError) {
-        console.error('Failed to send notification email:', emailError);
-        // Don't fail the submission if email fails
+        // Log error but don't fail the submission if email notification fails
+        handleError(emailError, 'notification email');
       }
 
       toast({

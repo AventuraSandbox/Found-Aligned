@@ -1,3 +1,5 @@
+import { RATE_LIMIT_CONFIG } from './constants';
+
 // Security utilities for edge function communication
 export const createSecureHeaders = async (turnstileToken?: string) => ({
   'x-turnstile-token': turnstileToken || '',
@@ -16,7 +18,11 @@ export const getTurnstileToken = () => turnstileToken;
 // Client-side rate limiting
 const requestTracker = new Map<string, { count: number; resetTime: number }>();
 
-export const checkClientRateLimit = (identifier: string, maxRequests = 3, windowMs = 60000): boolean => {
+export const checkClientRateLimit = (
+  identifier: string, 
+  maxRequests: number = RATE_LIMIT_CONFIG.DEFAULT_MAX_REQUESTS, 
+  windowMs: number = RATE_LIMIT_CONFIG.DEFAULT_WINDOW_MS
+): boolean => {
   const now = Date.now();
   const current = requestTracker.get(identifier);
   
