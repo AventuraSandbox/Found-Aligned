@@ -1,70 +1,101 @@
 # Found & Aligned - Premium Matchmaking Service
 
-## Project info
+## Project Overview
+
+Found & Aligned is a premium matchmaking service website built for discerning individuals seeking meaningful, lifestyle-aligned relationships.
 
 **Repository**: https://github.com/AventuraSandbox/Found-Aligned
 
-## How can I edit this code?
+## Technology Stack
 
-There are several ways of editing your application.
+- **Vite** - Build tool and dev server
+- **TypeScript** - Type-safe JavaScript
+- **React 18** - UI framework
+- **React Router** - Client-side routing
+- **shadcn-ui** - Component library
+- **Tailwind CSS** - Utility-first CSS
+- **Supabase** - Backend as a service (Database, Auth, Edge Functions)
+- **Zod** - Schema validation
+- **React Hook Form** - Form management
+- **Vitest** - Testing framework
 
-**Use your preferred IDE**
+## Development Setup
 
-If you want to work locally using your own IDE, you can clone this repo and push changes.
+### Prerequisites
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+- Node.js 18+ (install with [nvm](https://github.com/nvm-sh/nvm#installing-and-updating))
+- npm or bun
 
-Follow these steps:
+### Installation
 
 ```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+# Clone the repository
+git clone https://github.com/AventuraSandbox/Found-Aligned.git
+cd Found-Aligned
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+# Install dependencies
+npm install
 
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
+# Start development server
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+### Available Scripts
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+- `npm run dev` - Start development server
+- `npm run build` - Build for production
+- `npm run preview` - Preview production build
+- `npm run test` - Run tests in watch mode
+- `npm run test:run` - Run tests once
+- `npm run test:coverage` - Run tests with coverage report
+- `npm run lint` - Run ESLint
+- `npm run typecheck` - Type check without emitting files
 
-**Use GitHub Codespaces**
+## Testing
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+The project includes comprehensive test coverage:
 
-## What technologies are used for this project?
+- Unit tests for utilities (validation, security, error handling)
+- Component tests for ErrorBoundary and ProtectedRoute
+- Hook tests for useAuth
+- See `TEST_SUMMARY.md` for details
 
-This project is built with:
+## Deployment
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+The project is configured for deployment on Netlify. See `DEPLOYMENT_GUIDE.md` for detailed deployment instructions.
 
-## How can I deploy this project?
+### Quick Deploy
 
-You can deploy this project to any hosting platform that supports React applications:
+1. Connect your GitHub repository to Netlify
+2. Set environment variables in Netlify dashboard
+3. Build command: `bun run build` (or `npm run build`)
+4. Publish directory: `dist`
 
-- **Vercel**: Connect your GitHub repository and deploy automatically
-- **Netlify**: Drag and drop the build folder or connect to GitHub
-- **AWS Amplify**: Connect to GitHub for automatic deployments
-- **GitHub Pages**: Deploy directly from your repository
+## Environment Variables
 
-## Can I connect a custom domain to my project?
+Required environment variables (see `env.example`):
 
-Yes, you can!
+- `VITE_SUPABASE_URL` - Supabase project URL
+- `VITE_SUPABASE_ANON_KEY` - Supabase anonymous key
+- `VITE_TURNSTILE_SITE_KEY` - Cloudflare Turnstile site key
 
-Most hosting platforms support custom domain configuration. Check your hosting provider's documentation for domain setup instructions.
+## Security Features
+
+- CAPTCHA verification (Cloudflare Turnstile)
+- Rate limiting (client and server-side)
+- Input sanitization
+- Protected admin routes
+- Row Level Security (RLS) policies
+- Security headers (CSP, HSTS, etc.)
+
+## Project Structure
+
+```
+src/
+├── components/      # React components
+├── hooks/          # Custom React hooks
+├── lib/            # Utilities and validation
+├── pages/          # Page components
+├── integrations/   # External service integrations
+└── test/           # Test setup files
+```
