@@ -1,0 +1,238 @@
+---
+description: User has implementation plan reviewed and ready to execute.
+globs:
+alwaysApply: false
+---
+
+---
+description: User has implementation plan reviewed and ready to execute.
+globs:
+alwaysApply: false
+---
+
+# Task Execution Protocol
+
+## 🎯 Goal: Execute approved task checklists with production safety
+
+**Prerequisites**: Plan reviewed and converted to executable format via @03-prd-review.mdc
+
+### **Pre-Execution**
+1. Verify plan follows exact format from @03-prd-review.mdc
+2. Confirm all file paths exist via codebase_search
+3. Start with first uncompleted `[ ]` task
+
+### **Task Execution**
+1. **Find Next Task** - First uncompleted `[ ]` item
+2. **Execute** - Complete single task only
+3. **QA** - Run appropriate layer validation commands
+4. **Mark Complete** - Update `[x]`, save file, get user "yes"
+5. **Git Commit** - Add commit ID when phase complete
+6. **Update Status** - Change section to `✅ [COMPLETED]` when phase done
+7. **QA Gates** - Complete QA after each phase before proceeding
+8. **Linear Status Update** - Update Linear issue status after each phase
+9. **PAUSE after each phase** and await user confirmation to proceed
+
+## QA Validation Steps
+1. **[Layer] Test** - Specific validation command/test
+2. **Integration** - End-to-end validation
+3. **Build Verification** - No compilation errors/warnings
+4. **User Validation Scenarios** - Propose manual QA confirmation user should take
+
+## 🏗️ Phase Execution Order (Customize for your stack)
+1. **Database (1.0)** → Supabase schema changes → QA Validation
+2. **Backend (2.0)** → Fastify API changes → QA Validation
+3. **Network/API (3.0)** → API integration → QA Validation
+4. **Frontend (4.0)** → React Native mobile changes → QA Validation
+5. **Tech Debt (5.0)** → Code cleanup → QA Validation
+
+## 🛑 Stop Conditions
+- Plan format incorrect → redirect to @03-prd-review.mdc
+- Build/test fails → fix before continuing
+- Failing to fix after 3 tries → pause and redirect to @07-rubberduck.mdc
+- User rejects QA results → address issues
+- Placeholder/mock code detected → remove before proceeding
+
+## 🧪 QA Commands by Layer (CUSTOMIZE FOR YOUR STACK)
+
+```bash
+# Database QA (Supabase)
+supabase db diff
+supabase db reset --linked
+psql $DATABASE_URL -c "SELECT * FROM information_schema.tables WHERE table_schema = 'public'"
+
+# Backend QA (Fastify)
+cd apps/orchestrator && pnpm test
+cd apps/orchestrator && pnpm build
+curl -f http://localhost:3001/healthz
+
+# Frontend QA (React Native/Expo)
+cd apps/mobile && pnpm start --no-dev --minify
+cd apps/mobile && expo doctor
+cd apps/mobile && npx react-native run-android --variant=release
+
+# Build Validation (after every change)
+pnpm build
+pnpm test
+
+# Production Deployment (backend changes)
+vercel deploy --prod
+vercel logs --follow
+```
+
+## 📊 Performance Monitoring Commands (CUSTOMIZE FOR YOUR STACK)
+
+### **Bundle Size Analysis**
+```bash
+# Mobile bundle analysis
+cd apps/mobile && expo export --platform android --output-dir ./dist
+cd apps/mobile && npx react-native-bundle-visualizer
+
+# Backend bundle analysis
+cd apps/orchestrator && pnpm build --analyze
+cd apps/orchestrator && npx webpack-bundle-analyzer dist/
+
+# Overall project size
+du -sh apps/mobile/ apps/orchestrator/
+find . -name "node_modules" -type d -exec du -sh {} \;
+```
+
+### **API Performance Testing**
+```bash
+# API response time testing
+curl -w "@curl-format.txt" -o /dev/null -s "http://localhost:3001/healthz"
+curl -w "@curl-format.txt" -o /dev/null -s "http://localhost:3001/api/{{endpoint}}"
+
+# Load testing (install artillery first: npm install -g artillery)
+artillery quick --count 10 --num 5 http://localhost:3001/healthz
+artillery run load-test.yml
+
+# Database query performance
+psql $DATABASE_URL -c "EXPLAIN ANALYZE SELECT * FROM {{table}} WHERE {{condition}};"
+```
+
+### **Mobile Performance Testing**
+```bash
+# React Native performance
+cd apps/mobile && npx react-native run-android --variant=release --verbose
+cd apps/mobile && npx react-native run-ios --configuration Release --verbose
+
+# Expo performance
+cd apps/mobile && expo start --no-dev --minify --tunnel
+cd apps/mobile && expo build --platform android --type apk --no-publish
+
+# Memory usage monitoring
+cd apps/mobile && npx react-native run-android --variant=debug --verbose | grep -i memory
+```
+
+### **Production Performance Monitoring**
+```bash
+# Vercel performance
+vercel logs --follow | grep -i "performance\|slow\|timeout"
+vercel inspect {{deployment-url}} --logs
+
+# Supabase performance
+supabase db diff --schema public
+psql $DATABASE_URL -c "SELECT * FROM pg_stat_activity WHERE state = 'active';"
+
+# Real-time monitoring
+curl -s "https://orchestrator.metabolicresilience.com/healthz" | jq '.response_time'
+```
+
+## 🎯 Success Metrics
+- **Build Status** - All builds successful
+- **Test Status** - All tests passing
+- **User Experience** - No regressions introduced
+- **Production Safety** - No placeholders/mocks deployed
+- **Linear Tracking** - Issue status updated throughout development
+
+## 📋 Linear Integration Commands (CUSTOMIZE FOR YOUR PROJECT)
+
+### **Linear Status Updates**
+```bash
+# Update Linear issue status
+curl -X POST https://api.linear.app/graphql \
+  -H "Authorization: Bearer $LINEAR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "mutation IssueUpdate($id: String!, $input: IssueUpdateInput!) { issueUpdate(id: $id, input: $input) { success } }",
+    "variables": {
+      "id": "{{LINEAR_ISSUE_ID}}",
+      "input": {
+        "stateId": "{{STATUS_ID}}"
+      }
+    }
+  }'
+```
+
+### **Linear Status Mapping**
+- **In Progress**: `stateId: "in-progress"`
+- **Review**: `stateId: "review"`
+- **Testing**: `stateId: "testing"`
+- **Done**: `stateId: "done"`
+
+### **Linear Time Tracking**
+```bash
+# Log time to Linear issue
+curl -X POST https://api.linear.app/graphql \
+  -H "Authorization: Bearer $LINEAR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "query": "mutation TimeEntryCreate($input: TimeEntryCreateInput!) { timeEntryCreate(input: $input) { success } }",
+    "variables": {
+      "input": {
+        "issueId": "{{LINEAR_ISSUE_ID}}",
+        "duration": {{DURATION_MINUTES}},
+        "description": "{{TASK_DESCRIPTION}}"
+      }
+    }
+  }'
+```
+
+# Code Execution Guidelines
+
+## Platform-Specific Standards (CUSTOMIZE FOR YOUR STACK)
+
+### Frontend Standards
+- **Platform**: iOS/Android (React Native/Expo)
+- **UI/UX**: Follow Apple HIG and Material Design guidelines
+- **File size**: ≤300 lines (warn if >500)
+- **No hardcoded secrets** - use .env files
+- **Timezone**: UTC - Use ISO 8601 format
+- **Build**: `expo build` or `eas build`
+
+### Backend Standards
+- **Environment**: Node.js 18+
+- **Framework**: Fastify with TypeScript
+- **Testing**: Vitest and `pnpm test`
+- **Deployment**: Vercel
+- **Database**: Supabase PostgreSQL
+
+## 🚨 Production Safety
+- **No mocks/placeholders** in production code
+- **Real environments** - Supabase PostgreSQL, Vercel endpoints
+- **Proper error handling** for user-facing features
+- **Flag placeholders** with `// PLACEHOLDER` + chat notice
+
+## Example Customization Template
+
+Replace these placeholders with your actual commands:
+
+```bash
+# Database Commands
+DATABASE_TEST_COMMAND="pytest tests/database/ -v"
+DATABASE_QUERY_COMMAND="{{DB_CLI}} -e 'SELECT * FROM {{table}} LIMIT 1'"
+
+# Backend Commands
+BACKEND_TEST_COMMAND="{{TEST_FRAMEWORK}} {{TEST_PATH}} -v"
+BACKEND_BUILD_CHECK="{{COMPILER}} {{SOURCE_FILE}}"
+BACKEND_HEALTH_CHECK="curl {{API_BASE}}/health"
+
+# Frontend Commands
+FRONTEND_BUILD_COMMAND="{{BUILD_TOOL}} build"
+FRONTEND_TEST_COMMAND="{{TEST_RUNNER}} {{TEST_SUITE}}"
+
+# Deployment Commands
+DEPLOYMENT_COMMAND="{{DEPLOY_TOOL}} deploy"
+DEPLOYMENT_STATUS="{{DEPLOY_TOOL}} status"
+DEPLOYMENT_LOGS="{{DEPLOY_TOOL}} logs"
+```

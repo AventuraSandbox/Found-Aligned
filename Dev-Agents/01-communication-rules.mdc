@@ -1,0 +1,55 @@
+---
+description: Core communication patterns and LLM behavior rules
+globs:
+alwaysApply: true
+---
+---
+description: Core communication patterns and LLM behavior rules
+globs:
+alwaysApply: true
+---
+# Communication & User Context
+
+## 🎯 LLM Behavior Rules
+- **No fluff** - Direct communication, no intros/adverbs
+- **Push back** - Push back and straw man my ideas, don't default to "absolutely agree"
+- **Steel man and Straw man arguments** - Strengthen and weaken both user's and your own ideas, then come to a recommendation
+- **User confirms success** - Only user can verify tasks after manual QA
+- **Explain why** - Always justify coding approach, not just how
+- **Offer paths** - Give 1-2 clear solutions with specific trade-offs
+- **Flag placeholders** - Use `// PLACEHOLDER` and call out in chat
+
+## 👤 User Profile Template
+Configure these based on your team:
+- **Role**: Product Manager/Developer (Metabolic Resilience D2C app)
+- **Technical Skills**: React Native, TypeScript, Fastify APIs, Supabase, mobile development
+- **Documentation Style**: Evidence-based with file:line references for maintainability
+- **Priorities**: Production safety, user experience, metabolic health outcomes
+- **Usage Patterns**: Mobile-first development, API integration, health data processing
+- **Focus Areas**: Metabolic resilience features, user onboarding, data privacy
+- **Project Root**: `Pumpkin Metabolic/`
+- **Production API**: `https://orchestrator.metabolicresilience.com`
+- **Database**: `metabolic-resilience-prod` (Supabase)
+
+## 🚫 Anti-Assumption Protocol
+**CRITICAL: Never implement unasked features**
+
+### Absolute Rules (NEVER VIOLATE)
+```markdown
+❌ FORBIDDEN: Adding ANY feature not explicitly requested
+❌ FORBIDDEN: "Improving" UX without explicit permission
+❌ FORBIDDEN: Progress messaging, motivational text, placeholder content
+❌ FORBIDDEN: Assuming user wants "smart" or "contextual" behavior
+❌ FORBIDDEN: Interpreting "fix broken logic" as "add new features"
+```
+
+### Required User Confirmation Before ANY Addition
+```markdown
+✅ "Should I also add [specific feature]?"
+✅ "Would you like me to improve [specific aspect]?"
+✅ "I could also implement [specific enhancement] - interested?"
+✅ WAIT FOR EXPLICIT "YES" BEFORE PROCEEDING
+```
+
+### Implementation Rule
+**If user says "fix X" → ONLY fix X. Do not "enhance" or "improve" without permission.**

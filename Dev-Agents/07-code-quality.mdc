@@ -1,0 +1,284 @@
+---
+description: Universal code quality rules and testing guidelines
+globs:
+alwaysApply: true
+---
+# Universal Code Quality Rules
+
+## ✅ Universal Code Quality Rules (All Languages)
+- Max 2 levels of nesting (if / else / loop)
+- Follow YAGNI principle
+- Functions should be small & single-purpose (<30 lines)
+- No magic values → use let/const or named constants
+- Use intention-revealing names for vars, funcs, classes
+- Avoid silent catch blocks — log or explicitly handle
+- Avoid duplicating state across local/props/context
+- Add `// TODO(name, date)` or `# TODO(name, date)` for hacks
+- No unnecessary fallbacks — document if needed
+- Expensive loops or filters must be memoized or paginated
+
+## Language-Specific Guidelines
+
+### 🐍 Python-Specific
+- Explicit is better than implicit. Don't hide behavior in dunder methods or decorators unless standard
+- Use typing for all public functions/classes. Especially return values
+- Don't mutate arguments in-place. Always return new values unless explicitly designed to do so
+- Use dataclasses or Pydantic for structured data, not loose dicts
+- Group related functions into modules, not long files
+- Use `__all__` or single-point exports. Avoid accidental public exposure
+- Don't catch Exception broadly. Use specific error types
+- Use pathlib and logging instead of os.path and print
+- Stick to black and ruff/flake8 for style and linting
+
+### 🍎 Swift-Specific
+- Avoid force unwrapping (!) — always use guard let, if let, or default values
+- Use struct by default, only use class if you need reference semantics
+- Functions should return immutable values unless you're explicitly mutating state
+- Favor value types (struct/enums) + protocol conformance
+- Avoid deep optional chaining — prefer early returns with guard
+- Use private(set) or internal access control to encapsulate state
+- Group related code using extensions — keeps logic modular and discoverable
+- Use @MainActor or concurrency annotations clearly
+- Use SwiftLint for consistent style, mark temporary disables with `// swiftlint:disable [rule] // TODO(name, date)`
+
+### 🌐 JavaScript/TypeScript-Specific
+- Use TypeScript strict mode
+- Prefer const over let, avoid var entirely
+- Use async/await over Promise chains
+- Destructure objects and arrays for clarity
+- Use optional chaining (?.) and nullish coalescing (??)
+- Prefer pure functions and immutable data structures
+- Use meaningful variable names, avoid abbreviations
+- Use ESLint and Prettier for consistent formatting
+- Handle errors explicitly, don't ignore Promise rejections
+
+### 📱 React Native/Expo-Specific
+- Use Expo Router for navigation instead of React Navigation directly
+- Prefer `useRouter()` over `useNavigation()` for Expo Router
+- Use `expo-constants` for environment variables, not `process.env`
+- Use `expo-linking` for deep links and URL handling
+- Prefer `expo-image` over `react-native` Image for better performance
+- Use `expo-status-bar` for status bar management
+- Handle platform differences with `Platform.OS` checks
+- Use `expo-device` for device information instead of custom solutions
+- Prefer `expo-sqlite` over `react-native-sqlite-storage`
+- Use `expo-secure-store` for sensitive data, not AsyncStorage
+- Handle keyboard with `expo-keyboard` for better UX
+- Use `expo-haptics` for tactile feedback
+- Prefer `expo-font` for custom fonts over manual font loading
+- Use `expo-splash-screen` for proper splash screen handling
+- Handle app state with `expo-app-state` instead of custom listeners
+
+### ☕ Java-Specific
+- Follow standard naming conventions (PascalCase for classes, camelCase for methods)
+- Use final keyword for variables that shouldn't change
+- Prefer composition over inheritance
+- Use Optional for nullable return types
+- Handle exceptions appropriately, don't catch and ignore
+- Use StringBuilder for string concatenation in loops
+- Follow single responsibility principle for classes
+- Use dependency injection instead of static dependencies
+
+### 🗄️ Supabase-Specific
+- Always use RLS (Row Level Security) policies for data access control
+- Use `supabase.from('table').select()` instead of raw SQL when possible
+- Implement proper error handling for Supabase client operations
+- Use `supabase.auth.getUser()` for authentication checks
+- Prefer Edge Functions over database functions for complex logic
+- Use `supabase.storage.from('bucket')` for file operations
+- Implement proper connection pooling with `supabase.createClient()`
+- Use `supabase.realtime` for real-time subscriptions
+- Always validate input with Zod schemas before Supabase operations
+- Use `supabase.rpc()` for custom database functions
+- Implement proper transaction handling with `supabase.transaction()`
+- Use `supabase.auth.onAuthStateChange()` for auth state management
+- Prefer `supabase.from().upsert()` over separate insert/update operations
+- Use `supabase.from().select().single()` for single record queries
+- Implement proper pagination with `supabase.from().select().range()`
+
+## 🧪 Universal Testing Guidelines
+- Always run tests before and after any code changes
+- Write tests for new features before implementation (TDD)
+- Update tests when changing existing behavior
+- Never commit broken tests — fix or skip with TODO
+- Use descriptive test names that explain the scenario
+- Test both success and failure cases
+- Mock external dependencies (APIs, databases, file system)
+- Use test data factories for consistent test data
+- Keep tests fast (<2 minutes total runtime)
+- Group related tests using test classes or describe blocks
+
+## 🔐 Authentication Testing
+- Always test with real authentication tokens for API endpoints
+- Use environment variables for test credentials
+- Test both authenticated and unauthenticated scenarios
+- Validate token expiration and refresh flows
+- Test permission-based access control
+- Mock authentication in unit tests, use real auth in integration tests
+
+## 📊 Test Coverage Targets
+- **Service Layer**: 70-85%
+- **API Layer**: 60-75%
+- **Models/Utils**: 85-95%
+- **Infrastructure**: 50-70%
+- **Frontend Components**: 60-80%
+- **Critical Business Logic**: 90%+
+
+## 🚀 Framework-Specific Quick Commands (CUSTOMIZE FOR YOUR STACK)
+
+### Backend Testing
+```bash
+# Full test suite (Fastify/TypeScript)
+cd apps/orchestrator && pnpm test # vitest with TypeScript
+cd apps/orchestrator && pnpm test --coverage # coverage report
+
+# Service layer tests
+cd apps/orchestrator && pnpm test src/agents/ # test specific agents
+
+# API tests with authentication
+export SUPABASE_ANON_KEY=$(grep 'SUPABASE_ANON_KEY=' .env | cut -d'=' -f2)
+curl -H "Authorization: Bearer $SUPABASE_ANON_KEY" http://localhost:3001/healthz
+
+# Single test file
+cd apps/orchestrator && pnpm test src/agents/composer.test.ts
+
+# Debug failing tests
+cd apps/orchestrator && pnpm test --reporter=verbose
+```
+
+### Frontend Testing (React Native/Expo)
+```bash
+# Mobile app health checks
+cd apps/mobile && expo doctor # check for issues
+cd apps/mobile && expo install --check # verify dependencies
+
+# Production build testing
+cd apps/mobile && expo build --platform android --type apk
+cd apps/mobile && expo build --platform ios --type archive
+
+# Development testing
+cd apps/mobile && expo start --no-dev --minify # production build test
+cd apps/mobile && expo start --tunnel # test with tunnel
+cd apps/mobile && expo start --dev-client # test with dev client
+
+# Platform-specific testing
+cd apps/mobile && npx react-native run-android --variant=debug
+cd apps/mobile && npx react-native run-ios --configuration Debug
+
+# EAS Build testing
+cd apps/mobile && eas build --platform android --profile preview
+cd apps/mobile && eas build --platform ios --profile preview
+
+# Mobile-specific testing commands
+cd apps/mobile && expo start --android # Android emulator
+cd apps/mobile && expo start --ios # iOS simulator
+cd apps/mobile && expo start --web # Web version testing
+```
+
+### Supabase Testing
+```bash
+# Supabase CLI testing
+supabase status # check local development status
+supabase db reset # reset local database
+supabase db diff # check for schema changes
+supabase functions serve # test Edge Functions locally
+
+# Database testing
+supabase db test # run database tests
+supabase db lint # check for database issues
+supabase db seed # seed test data
+
+# Edge Function testing
+supabase functions deploy --no-verify-jwt # deploy functions
+supabase functions logs --follow # monitor function logs
+
+# RLS Policy testing
+supabase db diff --schema public # check RLS policies
+supabase db lint --schema public # validate RLS setup
+
+# Authentication testing
+supabase auth test # test auth configuration
+supabase auth users list # list test users
+```
+
+## 🔧 Authentication Token Management (CUSTOMIZE FOR YOUR AUTH SYSTEM)
+
+### Get Test Authentication Token
+```bash
+# From environment file
+export SUPABASE_ANON_KEY=$(grep 'SUPABASE_ANON_KEY=' .env | cut -d'=' -f2)
+
+# Or generate new token via Supabase API
+curl -X POST https://your-project.supabase.co/auth/v1/token \
+  -H "Content-Type: application/json" \
+  -d '{"email": "test@example.com", "password": "testpassword"}'
+```
+
+### Use Authentication Token in Tests
+```bash
+# API testing with real auth
+curl -H "Authorization: Bearer $SUPABASE_ANON_KEY" \
+  http://localhost:3001/healthz
+
+# Language-specific test with real auth (TypeScript example)
+import { createClient } from '@supabase/supabase-js'
+
+const supabase = createClient(
+  process.env.SUPABASE_URL!,
+  process.env.SUPABASE_ANON_KEY!
+)
+const { data, error } = await supabase.from('profiles').select('*')
+```
+
+## 📋 Pre-Commit Checklist
+- [ ] All tests pass locally
+- [ ] Code coverage meets targets
+- [ ] No flaky tests
+- [ ] Authentication tested (where applicable)
+- [ ] Both success and error cases covered
+- [ ] Performance tests for critical paths
+- [ ] Integration tests with real dependencies
+- [ ] Linting passes without warnings
+- [ ] No hardcoded secrets or credentials
+- [ ] Documentation updated for public APIs
+- [ ] Bundle size within acceptable limits
+- [ ] API response times under 200ms
+- [ ] Database queries optimized
+- [ ] Mobile app performance tested
+- [ ] Production monitoring configured
+
+## Customization Template
+
+Replace these placeholders with your actual commands:
+
+```bash
+# Backend Commands
+BACKEND_TEST_COMMAND="cd apps/orchestrator && pnpm test"
+BACKEND_COVERAGE_COMMAND="cd apps/orchestrator && pnpm test --coverage"
+SERVICE_TEST_COMMAND="cd apps/orchestrator && pnpm test src/agents/"
+API_TEST_COMMAND="curl -H 'Authorization: Bearer $SUPABASE_ANON_KEY' http://localhost:3001/healthz"
+
+# Frontend Commands
+FRONTEND_TEST_COMMAND="cd apps/mobile && expo doctor"
+FRONTEND_BUILD_COMMAND="cd apps/mobile && expo build"
+UNIT_TEST_COMMAND="cd apps/mobile && npx react-native run-android --variant=debug"
+INTEGRATION_TEST_COMMAND="cd apps/mobile && expo start --tunnel"
+
+# Authentication (Metabolic Resilience Project)
+TOKEN_VAR="SUPABASE_ANON_KEY"
+AUTH_ENDPOINT="https://metabolic-resilience-prod.supabase.co/auth/v1/token"
+CONFIG_FILE=".env"
+TOKEN_KEY="SUPABASE_ANON_KEY"
+TEST_USER="test@metabolicresilience.com"
+TEST_PASS="testpassword"
+```
+
+## Code Review Checklist
+- [ ] **Readability**: Code is self-documenting with clear variable names
+- [ ] **Simplicity**: Solution is as simple as possible but no simpler
+- [ ] **Testability**: Code can be easily unit tested
+- [ ] **Error Handling**: Appropriate error handling for expected failure modes
+- [ ] **Performance**: No obvious performance issues (O(n²) loops, etc.)
+- [ ] **Security**: No hardcoded credentials, input validation present
+- [ ] **Maintainability**: Code follows established patterns and conventions
+- [ ] **Documentation**: Public APIs are documented, complex logic explained
