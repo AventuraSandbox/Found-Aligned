@@ -2,23 +2,23 @@ export const HERO = {
   eyebrow: "",
   headline: "Find Love Through Alignment",
   subhead:
-    "Premium matchmaking for high-achieving professionals in the Midwest seeking meaningful, value-aligned partnerships. Serving Illinois, Wisconsin, Michigan, and Indiana.",
+    "You've built a successful career. You know what you want in life. Now it's time to find a partner who truly matches your values, energy, and vision for the future. Premium matchmaking for emotionally intelligent professionals, currently serving Illinois, Wisconsin, Michigan, and Indiana.",
   ctaPrimary: { label: "Start Your Journey", href: "/contact" },
   ctaSecondary: { label: "Learn Our Approach", href: "/our-approach" },
 };
 
 export const VALUE_PROPS = [
   {
-    title: "Emotionally Intelligent",
-    text: "We emphasize emotional maturity, attachment styles, and genuine alignment over superficial attraction.",
+    title: "Dating with Depth",
+    text: "We understand that dating in your 30s, 40s, and 50s often means navigating past relationships, evolving priorities, and deeper self-awareness. Our approach honors your journey and focuses on emotional readiness, attachment patterns, and genuine compatibility beyond the surface.",
   },
   {
-    title: "Curated & Personal",
-    text: "No algorithms. Thoughtful, human matchmaking tailored to your values, lifestyle, and vision.",
+    title: "Concierge, Not Apps",
+    text: "No algorithms. No swiping. Just thoughtful, human matchmaking tailored to your values, lifestyle, and vision for partnership. Every introduction is personally curated by your dedicated matchmaker.",
   },
   {
-    title: "Regionally Rooted",
-    text: "Focused on Illinois, Wisconsin, Michigan, and Indiana for authentic local compatibility.",
+    title: "Private & Discreet",
+    text: "Your search remains completely confidential. We protect your privacy at every step, ensuring a discreet experience designed for professionals who value discretion as much as results..",
   },
 ];
 

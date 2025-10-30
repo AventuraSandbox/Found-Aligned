@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Heart, Users, MessageCircle, Shield, ArrowRight, Star, CheckCircle, Crown } from "lucide-react";
+import { Heart, Users, MessageCircle, Shield, ArrowRight, Star, CheckCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useAuth } from "@/hooks/useAuth";
 import { ThemeToggle } from "@/components/ThemeToggle";
@@ -99,22 +99,12 @@ const Index = () => {
       <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">Designed for Midwest Professionals</h2>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">Who We Serve</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Found & Aligned serves successful professionals ages 30-55 across Chicago, Milwaukee, Madison, Indianapolis, and Detroit. Our clients are
-              emotionally aware, time-conscious, and seeking intentional partnership over app culture.
+              Accomplished professionals ages 35-55 who've built successful lives and are ready for love that complements (not completes) who they already are. Our clients are emotionally intelligent, value-driven, and understand that finding the right partner is an investment worth making. They seek intentional connection over app culture.
             </p>
-            <div className="mt-6 max-w-3xl mx-auto text-muted-foreground">
-              <ul className="list-disc pl-6 space-y-1">
-                <li>Corporate executives and entrepreneurs</li>
-                <li>Healthcare and medtech professionals</li>
-                <li>Finance and auto-tech leaders</li>
-                <li>Academic and startup communities</li>
-                <li>Income: $200K+</li>
-              </ul>
-            </div>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">
             <div className="relative group">
               <img
@@ -129,7 +119,7 @@ const Index = () => {
                 <p className="text-white/90">Ready to invest in meaningful connection</p>
               </div>
             </div>
-            
+
             <div className="relative group">
               <img
                 src={lifestyleMan}
@@ -155,7 +145,7 @@ const Index = () => {
               Why Choose Found & Aligned
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We understand the unique challenges and opportunities of dating at 45+.
+              We understand the unique challenges and opportunities of dating for successful professionals at 35 to 55.
             </p>
           </div>
           
@@ -187,7 +177,7 @@ const Index = () => {
               Our Approach
             </h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
-              We believe in emotional depth, intuition, and human connection—not algorithms.
+              We believe in emotional depth, intuition, and human connection - not algorithms.
             </p>
           </div>
 
@@ -294,8 +284,8 @@ const Index = () => {
                 <p className="text-muted-foreground text-sm">Comprehensive lifestyle and values assessment</p>
               </div>
               <div className="text-left">
-                <h4 className="font-semibold text-primary mb-2">Custom Scouting</h4>
-                <p className="text-muted-foreground text-sm">Personalized search for your ideal match</p>
+                <h4 className="font-semibold text-primary mb-2">Personal Transformation & Coaching</h4>
+                <p className="text-muted-foreground text-sm">Image & Presence Coaching, Emotional Intelligence Mastery Sessions, Personal Brand Dating Photoshoot</p>
               </div>
               <div className="text-left">
                 <h4 className="font-semibold text-primary mb-2">White-Glove Support</h4>
@@ -304,9 +294,9 @@ const Index = () => {
             </div>
 
             <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-primary mb-6">Investment: $7,500+</p>
+              <p className="text-2xl font-serif font-semibold text-primary mb-6">Investment: $7,500</p>
               <Button variant="hero" size="xl" asChild>
-                <Link to="/founding-clients">
+                <Link to="/apply">
                   Apply for Founding Client Program
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
@@ -330,7 +320,7 @@ const Index = () => {
               <p className="text-muted-foreground mb-8 leading-relaxed">
                 In a world of endless options and surface-level connections, we understand that finding someone 
                 who truly aligns with your values, lifestyle, and long-term vision requires intention, expertise, 
-                and genuine human insight. Our approach goes beyond compatibility—we focus on the deeper 
+                and genuine human insight. Our approach goes beyond compatibility — we focus on the deeper 
                 elements that create lasting, fulfilling relationships.
               </p>
               <Button variant="premium" size="lg" asChild>
@@ -353,7 +343,7 @@ const Index = () => {
       <section className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <blockquote className="text-2xl sm:text-3xl font-serif italic text-primary mb-8 leading-relaxed">
-            "This isn't about finding someone to complete you—it's about finding someone 
+            "This isn't about finding someone to complete you - it's about finding someone 
             who complements the whole person you already are."
           </blockquote>
           <cite className="text-muted-foreground">— Found & Aligned Philosophy</cite>
@@ -367,8 +357,7 @@ const Index = () => {
             Ready to find your person, the right way?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            Join discerning individuals who understand that the best relationships 
-            are worth investing in—and worth waiting for.
+          Join people who understand that the best relationships are worth investing in (and worth waiting for).
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
@@ -393,8 +382,7 @@ const Index = () => {
                 Found & Aligned
               </div>
               <p className="text-muted-foreground mb-4 leading-relaxed">
-                Premium matchmaking for discerning individuals ready to invest 
-                in meaningful, lifestyle-aligned relationships.
+              Premium matchmaking for people ready to invest in meaningful, value-aligned relationships.
               </p>
               <p className="text-sm text-muted-foreground">
                 Love, Found & Aligned.
@@ -407,6 +395,9 @@ const Index = () => {
                 <li><a href="#" className="hover:text-primary transition-colors">Founding Client Program</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Discovery Interview</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Relationship Coaching</a></li>
+                <li>
+                  <Link to="/programs" className="hover:text-primary transition-colors">Programs</Link>
+                </li>
               </ul>
             </div>
             
@@ -421,7 +412,7 @@ const Index = () => {
           </div>
           
           <div className="border-t border-border/30 mt-8 pt-8 text-center text-muted-foreground">
-            <p>&copy; 2024 Found & Aligned. All rights reserved.</p>
+            <p>&copy; 2025 Found & Aligned. All rights reserved.</p>
           </div>
         </div>
       </footer>

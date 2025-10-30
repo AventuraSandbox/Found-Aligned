@@ -39,8 +39,8 @@ const FoundingClients = () => {
             Founding Client Experience
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            An exclusive, white-glove matchmaking experience for discerning individuals ready to invest 
-            in finding their person through our most premium service offering.
+            Join our exclusive funding client program. Limited spots for an exclusive, white-glove matchmaking experience for 
+            people who are serious about finding love and ready to invest in making it happen.
           </p>
           <div className="inline-flex items-center gap-2 bg-accent/50 px-6 py-2 rounded-full text-primary font-medium">
             <Star className="h-4 w-4" />
