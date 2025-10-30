@@ -32,104 +32,45 @@ const OurApproach = () => {
             Our Approach
           </h1>
           <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            We believe in emotional depth, intuition, and human connection—not algorithms. 
-            Our methodology is built on understanding the whole person, not just their preferences.
+            Modern matchmaking grounded in emotional intelligence.
           </p>
         </div>
       </section>
 
-      {/* Detailed Process */}
+      {/* Values */}
       <section className="py-16 lg:py-24">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
-          <div className="grid lg:grid-cols-3 gap-12">
+          <div className="grid md:grid-cols-2 gap-12">
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <Heart className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">
-                Personal Discovery Interview
-              </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>Our process begins with a comprehensive 90-minute conversation that goes far beyond surface preferences.</p>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Deep dive into your values and life philosophy</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Lifestyle assessment and future vision alignment</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Relationship patterns and growth areas</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Non-negotiables vs. areas for flexibility</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Emotionally Intelligent</h3>
+              <p className="text-muted-foreground leading-relaxed">We believe lasting love begins with self-awareness. Our process emphasizes emotional maturity, attachment styles, and genuine alignment over superficial attraction. We guide you to understand yourself deeply so you can recognize compatible partnership.</p>
             </Card>
 
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <Users className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">
-                Curated Introductions
-              </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>Every introduction is personally vetted and thoughtfully considered for long-term compatibility.</p>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Hand-selected from our exclusive network</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Values and lifestyle alignment verification</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Timing and life stage compatibility</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Quality over quantity approach</span>
-                  </li>
-                </ul>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Curated & Personal</h3>
+              <p className="text-muted-foreground leading-relaxed">No algorithms. No apps. Just thoughtful, human matchmaking tailored to your values, lifestyle, and vision for partnership. Every introduction is handpicked by your dedicated matchmaker who knows you personally.</p>
+            </Card>
+
+            <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
+              <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
+                <Shield className="h-10 w-10 text-primary" />
               </div>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Regionally Rooted</h3>
+              <p className="text-muted-foreground leading-relaxed">We understand Midwest culture, values, and lifestyle. Our network is carefully curated within Illinois, Wisconsin, Michigan, and Indiana for authentic local compatibility. We know these cities, their communities, and what makes relationships thrive here.</p>
             </Card>
 
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <MessageCircle className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">
-                Ongoing Support
-              </h3>
-              <div className="space-y-4 text-muted-foreground">
-                <p>Relationship coaching and guidance throughout your journey to meaningful connection.</p>
-                <ul className="space-y-2">
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Pre and post-date feedback sessions</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Communication and dating strategy coaching</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Relationship development guidance</span>
-                  </li>
-                  <li className="flex items-start gap-2">
-                    <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span>Long-term relationship support</span>
-                  </li>
-                </ul>
-              </div>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Transformation-Focused</h3>
+              <p className="text-muted-foreground leading-relaxed">Beyond introductions, we offer coaching and support to help you show up as your best self in dating and relationships. Our process includes feedback loops, emotional intelligence development, and personal growth alongside matchmaking.</p>
             </Card>
           </div>
         </div>

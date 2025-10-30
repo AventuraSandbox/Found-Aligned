@@ -59,9 +59,11 @@ const Index = () => {
         <div className="max-w-7xl mx-auto px-6 sm:px-8">
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             <div className="text-center lg:text-left">
-              <p className="uppercase tracking-wide text-sm text-muted-foreground mb-2">
-                {HERO.eyebrow}
-              </p>
+              {HERO.eyebrow && (
+                <p className="uppercase tracking-wide text-sm text-muted-foreground mb-2">
+                  {HERO.eyebrow}
+                </p>
+              )}
               <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6 leading-tight">
                 {HERO.headline}
               </h1>
@@ -97,13 +99,20 @@ const Index = () => {
       <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-16">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
-              Who We Serve
-            </h2>
+            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">Designed for Midwest Professionals</h2>
             <p className="text-lg text-muted-foreground max-w-3xl mx-auto leading-relaxed">
-              Accomplished professionals 45+ who've built successful lives and are ready for love that complements—not completes—who they already are. 
-              Our clients understand that finding the right person is an investment worth making.
+              Found & Aligned serves successful professionals ages 30-55 across Chicago, Milwaukee, Madison, Indianapolis, and Detroit. Our clients are
+              emotionally aware, time-conscious, and seeking intentional partnership over app culture.
             </p>
+            <div className="mt-6 max-w-3xl mx-auto text-muted-foreground">
+              <ul className="list-disc pl-6 space-y-1">
+                <li>Corporate executives and entrepreneurs</li>
+                <li>Healthcare and medtech professionals</li>
+                <li>Finance and auto-tech leaders</li>
+                <li>Academic and startup communities</li>
+                <li>Income: $200K+</li>
+              </ul>
+            </div>
           </div>
           
           <div className="grid md:grid-cols-2 gap-8 lg:gap-12">

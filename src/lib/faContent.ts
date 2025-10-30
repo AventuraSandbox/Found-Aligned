@@ -1,24 +1,24 @@
 export const HERO = {
-  eyebrow: "Premium Matchmaking for 45+",
-  headline: "Life's Second Chapter Deserves a First‑Class Love Story",
+  eyebrow: "",
+  headline: "Find Love Through Alignment",
   subhead:
-    "Found & Aligned helps accomplished professionals 45+ find relationships that fit their lives, values, and vision. Human, discreet, and deeply personalized—never algorithmic.",
-  ctaPrimary: { label: "Book a Private Consultation", href: "/book-discovery" },
-  ctaSecondary: { label: "See Packages", href: "/pricing" },
+    "Premium matchmaking for high-achieving professionals in the Midwest seeking meaningful, value-aligned partnerships. Serving Illinois, Wisconsin, Michigan, and Indiana.",
+  ctaPrimary: { label: "Start Your Journey", href: "/contact" },
+  ctaSecondary: { label: "Learn Our Approach", href: "/our-approach" },
 };
 
 export const VALUE_PROPS = [
   {
-    title: "Post‑Divorce Expertise",
-    text: "Specialized coaching and matching for mature relationship priorities, including family and legacy considerations.",
+    title: "Emotionally Intelligent",
+    text: "We emphasize emotional maturity, attachment styles, and genuine alignment over superficial attraction.",
   },
   {
-    title: "Concierge, Not Apps",
-    text: "Curated introductions, private logistics, and ongoing support—so you spend time on connection, not swipes.",
+    title: "Curated & Personal",
+    text: "No algorithms. Thoughtful, human matchmaking tailored to your values, lifestyle, and vision.",
   },
   {
-    title: "Private & Discreet",
-    text: "Secure platform and discretion protocols that respect your professional reputation and privacy.",
+    title: "Regionally Rooted",
+    text: "Focused on Illinois, Wisconsin, Michigan, and Indiana for authentic local compatibility.",
   },
 ];
 
