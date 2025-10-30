@@ -76,7 +76,7 @@ const BookDiscovery = () => {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div id="top" className="min-h-screen bg-background">
       {/* Navigation */}
       <nav className="border-b border-border/30 bg-background/80 backdrop-blur-sm fixed w-full z-50">
         <div className="max-w-7xl mx-auto px-6 sm:px-8">

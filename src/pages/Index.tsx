@@ -367,7 +367,7 @@ const Index = () => {
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/book-discovery">Book a Discovery Call</Link>
+              <Link to="/book-discovery#top">Book a Discovery Call</Link>
             </Button>
           </div>
         </div>
@@ -404,9 +404,15 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-primary mb-4">Connect</h4>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Apply Now</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Book Discovery Call</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Contact</a></li>
+                <li>
+                  <Link to="/apply" className="hover:text-primary transition-colors">Apply Now</Link>
+                </li>
+                <li>
+                  <Link to="/book-discovery#top" className="hover:text-primary transition-colors">Book Discovery Call</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+                </li>
               </ul>
             </div>
           </div>
