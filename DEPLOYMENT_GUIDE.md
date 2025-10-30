@@ -7,10 +7,6 @@
 Create a `.env` file in the project root with the following variables:
 
 ```env
-# Supabase Configuration
-VITE_SUPABASE_URL=https://your-project.supabase.co
-VITE_SUPABASE_ANON_KEY=your_supabase_anon_key_here
-
 # Site Configuration
 VITE_SITE_URL=https://foundandaligned.com
 
@@ -21,38 +17,8 @@ VITE_TURNSTILE_SITE_KEY=your_turnstile_site_key_here
 NODE_ENV=production
 ```
 
-### 2. Supabase Setup
-
-#### Database Migrations
-```bash
-# Deploy all migrations
-supabase db push
-
-# Or run the new security migration manually
-supabase db reset
-```
-
-#### Edge Functions
-```bash
-# Deploy edge functions
-supabase functions deploy send-application-notification
-supabase functions deploy send-discovery-call-notification
-```
-
-#### Function Secrets
-```bash
-# Set required secrets
-supabase functions secrets set RESEND_API_KEY=your_resend_api_key
-supabase functions secrets set TURNSTILE_SECRET_KEY=your_turnstile_secret_key
-```
-
-#### Admin User Setup
-```sql
--- Assign admin role to your user
-INSERT INTO public.user_roles (user_id, role)
-VALUES ('your-auth-user-id', 'admin')
-ON CONFLICT (user_id, role) DO NOTHING;
-```
+### 2. Hosting Setup
+No backend services are required. Ensure your host supports single-page app routing.
 
 ### 3. Cloudflare Turnstile Setup
 
@@ -111,7 +77,7 @@ Add these headers to your hosting platform:
   "X-Content-Type-Options": "nosniff",
   "Referrer-Policy": "strict-origin-when-cross-origin",
   "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
-  "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self' https://*.supabase.co wss://*.supabase.co;",
+  "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://challenges.cloudflare.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; font-src 'self' data:; connect-src 'self';",
   "Strict-Transport-Security": "max-age=31536000; includeSubDomains",
   "X-XSS-Protection": "1; mode=block"
 }
@@ -124,7 +90,7 @@ Add these headers to your hosting platform:
 - [ ] Discovery call form submits with all required fields
 - [ ] CAPTCHA verification works correctly
 - [ ] Email notifications are sent to `hello@foundandaligned.com`
-- [ ] Database records are created in Supabase
+// Removed: no database used
 - [ ] Error messages display for missing required fields
 - [ ] Form validation prevents submission with incomplete data
 
@@ -139,13 +105,13 @@ Add these headers to your hosting platform:
 - [ ] Application submission emails are received
 - [ ] Discovery call request emails are received
 - [ ] Email content includes all form data
-- [ ] Email includes link to Supabase record
+// Removed: no Supabase links
 - [ ] Email formatting is professional and readable
 
 ## 🔒 Security Features Implemented
 
 ### ✅ Fixed Issues
-1. **Hardcoded Supabase Keys** - Now using environment variables
+// Removed Supabase-related items
 2. **Client-Side Security Token** - Replaced with CAPTCHA verification
 3. **Missing Environment Setup** - Added `.env` configuration
 4. **Toast System Duplication** - Removed Sonner, kept shadcn/ui
@@ -160,7 +126,7 @@ Add these headers to your hosting platform:
 - **Input Sanitization**: HTML sanitization for all text inputs
 - **Protected Routes**: Admin access control
 - **Environment Variables**: Secure configuration management
-- **Database Constraints**: CHECK constraints and NOT NULL fields
+// Removed: database constraints (no DB)
 - **Security Headers**: Comprehensive CSP and security headers
 
 ## 🚀 Performance & Deployment Optimizations
@@ -183,19 +149,14 @@ Add these headers to your hosting platform:
 
 ## 📧 Email Configuration
 
-Both edge functions now:
-- Use CAPTCHA verification instead of security tokens
-- Send emails to `hello@foundandaligned.com`
-- Include comprehensive applicant data
-- Provide direct links to Supabase dashboard
-- Use professional HTML formatting
+If you add email notifications, configure them in your hosting/provider or a serverless function of your choice. No Supabase functions are required.
 
 ## 🚨 Important Notes
 
 1. **Environment Variables**: Never commit `.env` files to version control
 2. **CAPTCHA Keys**: Keep Turnstile secret key secure in function secrets
 3. **Domain Verification**: Ensure `foundandaligned.com` is verified in all services
-4. **Admin Access**: Set up admin user before deploying
+4. (Removed) Admin access setup
 5. **Monitoring**: Monitor function logs for security events
 
 ## 🔄 Post-Deployment

@@ -10,6 +10,10 @@ import { ThemeProvider } from "./components/ThemeProvider";
 // Lazy load pages for better performance
 const Index = lazy(() => import("./pages/Index"));
 const OurApproach = lazy(() => import("./pages/OurApproach"));
+const Services = lazy(() => import("./pages/Services"));
+const AddOns = lazy(() => import("./pages/AddOns"));
+const Regions = lazy(() => import("./pages/Regions"));
+const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
 const Pricing = lazy(() => import("./pages/Pricing"));
 const Programs = lazy(() => import("./pages/Programs"));
@@ -39,6 +43,10 @@ const App = () => (
               <Routes>
                 <Route path="/" element={<Index />} />
                 <Route path="/our-approach" element={<OurApproach />} />
+                <Route path="/services" element={<Services />} />
+                <Route path="/add-ons" element={<AddOns />} />
+                <Route path="/regions" element={<Regions />} />
+                <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
                 <Route path="/pricing" element={<Pricing />} />
                 <Route path="/programs" element={<Programs />} />

@@ -1,7 +1,0 @@
-project_id = "temsybfglhylzpxmntka"
-
-[functions.send-application-notification]
-verify_jwt = false
-
-[functions.send-discovery-call-notification]
-verify_jwt = false

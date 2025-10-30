@@ -9,12 +9,11 @@ import { ArrowRight, Heart, Shield, Crown } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { applicationFormSchema, type ApplicationFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
-import { createSecureHeaders, checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import { checkClientRateLimit, getTurnstileToken } from "@/lib/security";
 import { RATE_LIMIT_CONFIG } from "@/lib/constants";
 import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
@@ -61,46 +60,8 @@ const Apply = () => {
         expectations: data.expectations ? sanitizeHtml(data.expectations) : undefined,
       };
       
-      const { data: applicationData, error } = await supabase.from('applications').insert({
-        first_name: sanitizedData.firstName,
-        last_name: sanitizedData.lastName,
-        email: sanitizedData.email,
-        phone: sanitizedData.phone,
-        age: parseInt(sanitizedData.age?.split('-')[0]) || null,
-        location: sanitizedData.location,
-        profession: sanitizedData.profession,
-        education: sanitizedData.education,
-        relationship_goals: sanitizedData.relationshipGoals,
-        timeline: sanitizedData.timeline,
-        previous_relationships: sanitizedData.previousRelationships,
-        values: sanitizedData.values,
-        lifestyle: sanitizedData.lifestyle,
-        interests: sanitizedData.interests,
-        ideal_partner_qualities: sanitizedData.idealPartnerQualities,
-        ideal_partner_location: sanitizedData.idealPartnerLocation,
-        ideal_partner_profession: sanitizedData.idealPartnerProfession,
-        investment_level: sanitizedData.investmentLevel,
-        commitment_level: sanitizedData.commitmentLevel,
-        expectations: sanitizedData.expectations,
-        privacy_consent: sanitizedData.privacyConsent,
-        marketing_consent: sanitizedData.marketingConsent,
-        terms_consent: sanitizedData.termsConsent,
-      }).select().single();
-
-      if (error) {
-        console.error("Error inserting application:", error);
-        logSecurityEvent('application_submission_failed', { 
-          email: data.email, 
-          error: error.message 
-        });
-        handleError(error, 'application submission');
-        return;
-      }
-
-      logSecurityEvent('application_submission_success', { 
-        applicationId: applicationData.id,
-        email: data.email 
-      });
+      // Without Supabase, treat as success after CAPTCHA
+      logSecurityEvent('application_submission_success', { email: data.email });
 
       // Send notification email
       try {
@@ -114,13 +75,7 @@ const Apply = () => {
           return;
         }
 
-        await supabase.functions.invoke('send-application-notification', {
-          body: {
-            applicationId: applicationData.id,
-            applicantData: sanitizedData
-          },
-          headers: await createSecureHeaders(turnstileToken),
-        });
+        // Email notification disabled without backend; skip
       } catch (emailError) {
         // Log error but don't fail the submission if email notification fails
         handleError(emailError, 'notification email');

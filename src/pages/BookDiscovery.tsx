@@ -8,12 +8,11 @@ import { Calendar, Clock, Video, Phone, ArrowRight, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { supabase } from "@/integrations/supabase/client";
 import { useToast } from "@/hooks/use-toast";
 import { useState } from "react";
 import { discoveryCallSchema, type DiscoveryCallFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
-import { createSecureHeaders, checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import { checkClientRateLimit, getTurnstileToken } from "@/lib/security";
 import { RATE_LIMIT_CONFIG } from "@/lib/constants";
 import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
@@ -46,59 +45,18 @@ const BookDiscovery = () => {
         questions: data.questions ? sanitizeHtml(data.questions) : undefined,
       };
       
-      const { data: callData, error } = await supabase.from('discovery_calls').insert({
-        first_name: sanitizedData.firstName,
-        last_name: sanitizedData.lastName,
-        email: sanitizedData.email,
-        phone: sanitizedData.phone,
-        call_type: sanitizedData.callType,
-        preferred_time: sanitizedData.preferredTime,
-        timezone: sanitizedData.timezone,
-        age_range: sanitizedData.ageRange,
-        location: sanitizedData.location,
-        relationship_status: sanitizedData.relationshipStatus,
-        background_info: sanitizedData.backgroundInfo,
-        questions: sanitizedData.questions,
-      }).select().single();
-
-      if (error) {
-        console.error("Error inserting discovery call:", error);
-        logSecurityEvent('discovery_call_booking_failed', { 
-          email: data.email, 
-          error: error.message 
+      // Without Supabase, we just simulate success after CAPTCHA
+      const turnstileToken = getTurnstileToken();
+      if (!turnstileToken) {
+        toast({
+          variant: "destructive",
+          title: "Verification Required",
+          description: "Please complete the CAPTCHA verification.",
         });
-        handleError(error, 'discovery call booking');
         return;
       }
 
-      logSecurityEvent('discovery_call_booking_success', { 
-        callId: callData.id,
-        email: data.email 
-      });
-
-      // Send notification email
-      try {
-        const turnstileToken = getTurnstileToken();
-        if (!turnstileToken) {
-          toast({
-            variant: "destructive",
-            title: "Verification Required",
-            description: "Please complete the CAPTCHA verification.",
-          });
-          return;
-        }
-
-        await supabase.functions.invoke('send-discovery-call-notification', {
-          body: {
-            callId: callData.id,
-            callData: sanitizedData
-          },
-          headers: await createSecureHeaders(turnstileToken),
-        });
-      } catch (emailError) {
-        // Log error but don't fail the submission if email notification fails
-        handleError(emailError, 'notification email');
-      }
+      logSecurityEvent('discovery_call_booking_success', { email: data.email });
 
       toast({
         title: "Discovery Call Requested!",

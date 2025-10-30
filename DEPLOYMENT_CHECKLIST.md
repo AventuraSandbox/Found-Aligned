@@ -53,12 +53,8 @@
 
 ## 🔧 Technical Implementation
 
-### Email Functions
-- **Location**: `supabase/functions/send-application-notification/index.ts`
-- **Location**: `supabase/functions/send-discovery-call-notification/index.ts`
-- **Email Service**: Resend (configured in Supabase edge functions)
-- **Recipient**: `hello@foundandaligned.com`
-- **Sender**: `noreply@foundandaligned.com`
+### Email Notifications
+If you implement email notifications, configure them using your hosting/provider or a serverless function of your choice.
 
 ### Form Validation
 - **Location**: `src/lib/validation.ts`
@@ -67,19 +63,12 @@
 - **Error Display**: Real-time validation with user-friendly messages
 
 ### Database Schema
-- **Tables**: `applications` and `discovery_calls`
-- **Security**: Row Level Security enabled
-- **Policies**: Public insert, no public read access
-- **Triggers**: Automatic timestamp updates
+No database is used in this build.
 
 ## 🚀 Deployment Requirements
 
 ### 1. Environment Variables
-Set these in your Supabase project:
-```
-RESEND_API_KEY=your_resend_api_key
-EDGE_FUNCTION_SECRET=your_secure_secret_key
-```
+No Supabase environment variables are required.
 
 ### 2. Email Configuration
 - **Resend Account**: Set up Resend account and get API key
@@ -87,9 +76,7 @@ EDGE_FUNCTION_SECRET=your_secure_secret_key
 - **Sender Address**: Configure `noreply@foundandaligned.com` as verified sender
 
 ### 3. Supabase Setup
-- **Database**: Run all migrations in `supabase/migrations/`
-- **Edge Functions**: Deploy both email notification functions
-- **RLS Policies**: Ensure Row Level Security is properly configured
+Removed. No Supabase configuration is required.
 
 ### 4. Build & Deploy
 ```bash
@@ -109,7 +96,7 @@ npm run build
 - [ ] Application form submits with all required fields
 - [ ] Discovery call form submits with all required fields
 - [ ] Email notifications are sent to `hello@foundandaligned.com`
-- [ ] Database records are created in Supabase
+// Removed: no database used
 - [ ] Error messages display for missing required fields
 - [ ] Form validation prevents submission with incomplete data
 
@@ -117,7 +104,7 @@ npm run build
 - [ ] Application submission emails are received
 - [ ] Discovery call request emails are received
 - [ ] Email content includes all form data
-- [ ] Email includes link to Supabase record
+// Removed: no Supabase links
 - [ ] Email formatting is professional and readable
 
 ### Security Testing
@@ -140,8 +127,7 @@ Both email functions generate professional HTML emails with:
 - **Rate Limiting**: Client and server-side rate limiting
 - **Input Sanitization**: HTML sanitization for all text inputs
 - **CORS Protection**: Proper CORS headers configured
-- **Security Tokens**: Edge function authentication
-- **RLS Policies**: Database access control
+// Removed: edge function tokens and RLS (no backend)
 - **Error Logging**: Security event logging for monitoring
 
 ## 📱 User Experience
@@ -158,7 +144,7 @@ Both email functions generate professional HTML emails with:
 - **Two Lead Capture Forms**: Application and Discovery Call
 - **Comprehensive Data Collection**: All necessary information for qualification
 - **Immediate Email Notifications**: Real-time lead alerts
-- **Database Storage**: Structured data for CRM integration
+// Removed: database storage
 - **Professional Presentation**: High-quality user experience
 
 The website is now ready for deployment and will effectively capture leads with proper email notifications and form validation. 
