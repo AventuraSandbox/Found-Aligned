@@ -140,6 +140,20 @@ Submitted: ${new Date().toLocaleString()}
 
       logSecurityEvent('onboarding_submission_started', { email: formData.email });
 
+      // Check if Web3Forms access key is configured
+      const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
+      if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
+        toast({
+          variant: "destructive",
+          title: "Email Configuration Missing",
+          description: "Please set up Web3Forms access key. See QUICK_START.md for instructions.",
+        });
+        console.error('Web3Forms access key not configured. Please add VITE_WEB3FORMS_ACCESS_KEY to your .env file.');
+        console.error('Get your free access key from: https://web3forms.com');
+        setIsSubmitting(false);
+        return;
+      }
+
       // Format email content with questions and answers
       const emailBody = formatEmailContent(formData);
 
@@ -150,7 +164,7 @@ Submitted: ${new Date().toLocaleString()}
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY',
+          access_key: accessKey,
           subject: `New Application - ${formData.firstName} ${formData.lastName}`,
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
@@ -159,8 +173,11 @@ Submitted: ${new Date().toLocaleString()}
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to send application. Please try again.');
+      const result = await response.json();
+
+      if (!response.ok || result.success === false) {
+        console.error('Web3Forms API Error:', result);
+        throw new Error(result.message || 'Failed to send application. Please try again.');
       }
 
       logSecurityEvent('onboarding_submission_success', { email: formData.email });
@@ -177,10 +194,19 @@ Submitted: ${new Date().toLocaleString()}
       }, 2000);
 
     } catch (error) {
+      console.error('Form submission error:', error);
+      const errorMessage = error instanceof Error ? error.message : 'Unknown error occurred';
+      
+      toast({
+        variant: "destructive",
+        title: "Submission Failed",
+        description: errorMessage,
+      });
+      
       handleError(error, 'onboarding submission');
       logSecurityEvent('onboarding_submission_error', { 
         email: formData.email, 
-        error: error instanceof Error ? error.message : 'Unknown error'
+        error: errorMessage
       });
     } finally {
       setIsSubmitting(false);
