@@ -20,7 +20,7 @@ const HowItWorks = () => {
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/onboarding">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -308,7 +308,7 @@ const HowItWorks = () => {
             Ready to Get Started?
           </h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-            If you're ready for a matchmaking experience that honors your intelligence and respects your time, let's begin.
+            
           </p>
           <Button variant="hero" size="xl" asChild>
             <Link to="/apply">

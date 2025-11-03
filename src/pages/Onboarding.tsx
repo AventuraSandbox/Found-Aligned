@@ -23,6 +23,13 @@ interface OnboardingData {
   age: string;
   location: string;
   
+  // Additional Questions
+  birthday: string;
+  zipcode: string;
+  profession: string;
+  professionalStatus: string; // Retired, Student, Unemployed, or empty
+  annualIncome: string;
+  
   // Security: Honeypot field (hidden from users, catches bots)
   website?: string;
 }
@@ -41,6 +48,11 @@ const Onboarding = () => {
     seekingGender: "",
     age: "",
     location: "",
+    birthday: "",
+    zipcode: "",
+    profession: "",
+    professionalStatus: "",
+    annualIncome: "",
     website: "" // Honeypot field
   });
 
@@ -96,6 +108,27 @@ const Onboarding = () => {
         }
         return { isValid: true, message: "" };
       
+      case 3:
+        if (!formData.birthday) {
+          return { isValid: false, message: "Please enter your birthday" };
+        }
+        return { isValid: true, message: "" };
+      
+      case 4:
+        if (!formData.zipcode) {
+          return { isValid: false, message: "Please enter your zip code" };
+        }
+        if (formData.zipcode.length < 5) {
+          return { isValid: false, message: "Please enter a valid zip code" };
+        }
+        return { isValid: true, message: "" };
+      
+      case 5:
+        if (!formData.annualIncome) {
+          return { isValid: false, message: "Please select your annual income range" };
+        }
+        return { isValid: true, message: "" };
+      
       default:
         return { isValid: true, message: "" };
     }
@@ -111,12 +144,20 @@ CONTACT INFORMATION
 Name: ${data.firstName} ${data.lastName}
 Email: ${data.email}
 Phone: ${data.phone}
+Birthday: ${data.birthday}
+Zip Code: ${data.zipcode}
 
 ABOUT YOU
 ---------
 Gender: ${data.gender}
 Age Range: ${data.age}
 Location: ${data.location}
+
+PROFESSIONAL INFORMATION
+------------------------
+${data.profession ? `Profession: ${data.profession}` : ''}
+${data.professionalStatus ? `Status: ${data.professionalStatus}` : ''}
+Annual Income: ${data.annualIncome}
 
 WHO YOU'RE SEEKING
 ------------------
@@ -202,7 +243,7 @@ Submitted: ${new Date().toLocaleString()}
       // Show success and navigate
       toast({
         title: "Application Submitted Successfully!",
-        description: "We'll review your application and contact you within 3-5 business days.",
+        description: "We'll review your application and contact you within 1-3 business days.",
       });
 
       // Navigate to success page or home
@@ -392,6 +433,110 @@ Submitted: ${new Date().toLocaleString()}
           </div>
         </div>
       )
+    },
+
+    // Step 3: Birthday
+    {
+      title: "When's your birthday?",
+      subtitle: "",
+      content: (
+        <div className="space-y-6">
+          <div>
+            <Label htmlFor="birthday" className="text-base">Birthday *</Label>
+            <Input
+              id="birthday"
+              type="date"
+              value={formData.birthday}
+              onChange={(e) => updateField('birthday', e.target.value)}
+              className="mt-2 h-12"
+              placeholder="mm/dd/yyyy"
+            />
+          </div>
+        </div>
+      )
+    },
+
+    // Step 4: Zipcode
+    {
+      title: "What's your zip code?",
+      subtitle: "We ask so we can make sure we have great matches in your area.",
+      content: (
+        <div className="space-y-6">
+          <div>
+            <Label htmlFor="zipcode" className="text-base">Zip Code *</Label>
+            <Input
+              id="zipcode"
+              type="text"
+              value={formData.zipcode}
+              onChange={(e) => updateField('zipcode', e.target.value)}
+              className="mt-2 h-12"
+              placeholder="60642"
+              maxLength={5}
+            />
+          </div>
+        </div>
+      )
+    },
+
+    // Step 5: Professional Information
+    {
+      title: "How would you describe your professional situation?",
+      subtitle: "Describe what you do for a living as if you were on a first date with a match.",
+      content: (
+        <div className="space-y-6">
+          <div>
+            <Label htmlFor="profession" className="text-base">Your Profession</Label>
+            <Input
+              id="profession"
+              type="text"
+              value={formData.profession}
+              onChange={(e) => updateField('profession', e.target.value)}
+              className="mt-2 h-12"
+              placeholder="e.g., Marketing Manager, Software Engineer"
+            />
+          </div>
+
+          <div>
+            <Label className="text-base mb-4 block">If not employed</Label>
+            <div className="grid grid-cols-3 gap-3">
+              {['Retired', 'Student', 'Unemployed'].map((status) => (
+                <RadioOption
+                  key={status}
+                  value={status}
+                  label={status}
+                  selected={formData.professionalStatus === status}
+                  onClick={() => updateField('professionalStatus', status)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <Label className="text-base mb-4 block">Typical annual income *</Label>
+            <div className="space-y-2">
+              {[
+                'Less than $40,000',
+                '$40,000 - $60,000',
+                '$60,000 - $80,000',
+                '$80,000 - $100,000',
+                '$100,000 - $150,000',
+                '$150,000 - $200,000',
+                '$200,000 - $500,000',
+                '$500,000 - $1,000,000',
+                'More than $1,000,000'
+              ].map((income) => (
+                <RadioOption
+                  key={income}
+                  value={income}
+                  label={income}
+                  selected={formData.annualIncome === income}
+                  onClick={() => updateField('annualIncome', income)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )
     }
   ];
 
@@ -407,6 +552,12 @@ Submitted: ${new Date().toLocaleString()}
             <Link to="/" className="font-serif text-xl font-semibold text-primary">
               Found & Aligned
             </Link>
+            <div className="hidden md:flex space-x-8">
+              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+            </div>
             <div className="text-sm text-muted-foreground">
               Step {currentStep + 1} of {steps.length}
             </div>
@@ -449,15 +600,15 @@ Submitted: ${new Date().toLocaleString()}
             </div>
 
             {/* Navigation Buttons */}
-            <div className="flex items-center justify-between gap-4 pt-6 border-t">
+            <div className="flex items-center justify-between gap-4 pt-8 border-t mt-8">
               <Button
                 variant="outline"
                 size="lg"
                 onClick={handleBack}
                 disabled={currentStep === 0}
-                className="w-32"
+                className={`min-w-[140px] h-12 text-base ${currentStep === 0 ? 'invisible' : ''}`}
               >
-                <ArrowLeft className="mr-2 h-4 w-4" />
+                <ArrowLeft className="mr-2 h-5 w-5" />
                 Back
               </Button>
 
@@ -466,10 +617,10 @@ Submitted: ${new Date().toLocaleString()}
                   variant="hero"
                   size="lg"
                   onClick={handleNext}
-                  className="w-32"
+                  className="min-w-[140px] h-12 text-base font-semibold"
                 >
-                  Next
-                  <ArrowRight className="ml-2 h-4 w-4" />
+                  Continue
+                  <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               ) : (
                 <Button
@@ -477,10 +628,18 @@ Submitted: ${new Date().toLocaleString()}
                   size="lg"
                   onClick={handleSubmit}
                   disabled={isSubmitting}
-                  className="w-40"
+                  className="min-w-[160px] h-12 text-base font-semibold"
                 >
-                  {isSubmitting ? 'Submitting...' : 'Submit'}
-                  <Check className="ml-2 h-4 w-4" />
+                  {isSubmitting ? (
+                    <>
+                      <span className="animate-pulse">Submitting...</span>
+                    </>
+                  ) : (
+                    <>
+                      Submit Application
+                      <Check className="ml-2 h-5 w-5" />
+                    </>
+                  )}
                 </Button>
               )}
             </div>

@@ -121,7 +121,7 @@ const OurApproach = () => {
       <section className="py-16 lg:py-24">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
-            Ready to Experience Our Approach?
+            Let's Find Your Person!
           </h2>
           <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
             If you're ready for a matchmaking experience that honors your intelligence and respects your time, let's start the conversation.
@@ -134,7 +134,7 @@ const OurApproach = () => {
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/about">Learn More About Us</Link>
+              <Link to="/how-it-works">How Does It Work?</Link>
             </Button>
           </div>
         </div>

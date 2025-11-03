@@ -15,13 +15,13 @@ const Pricing = () => {
               Found & Aligned
             </Link>
             <div className="hidden md:flex space-x-8">
-              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
-              <Link to="/pricing" className="text-primary font-medium">Pricing</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
+              <Link to="/pricing" className="text-primary font-medium">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
-              <Link to="/book-discovery">Book Consultation</Link>
+              <Link to="/onboarding">Get Started</Link>
             </Button>
           </div>
         </div>

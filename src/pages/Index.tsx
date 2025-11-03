@@ -30,25 +30,9 @@ const Index = () => {
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
-              {user ? (
-                <>
-                  <span className="text-sm text-muted-foreground hidden sm:block">
-                    Welcome back!
-                  </span>
-                  <Button variant="outline" size="sm" onClick={signOut}>
-                    Sign Out
-                  </Button>
-                </>
-              ) : (
-                <>
-                  <Button variant="ghost" size="sm" asChild>
-                    <Link to="/auth">Sign In</Link>
-                  </Button>
-                  <Button variant="premium" size="sm" asChild>
-                    <Link to="/onboarding">Get Started</Link>
-                  </Button>
-                </>
-              )}
+              <Button variant="premium" size="sm" asChild>
+                <Link to="/onboarding">Get Started</Link>
+              </Button>
             </div>
           </div>
         </div>

@@ -89,12 +89,13 @@ const Apply = () => {
               Found & Aligned
             </Link>
             <div className="hidden md:flex space-x-8">
-              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/founding-clients" className="text-muted-foreground hover:text-primary transition-colors">Founding Clients</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
-              <Link to="/book-discovery">Book Discovery Call</Link>
+              <Link to="/onboarding">Get Started</Link>
             </Button>
           </div>
         </div>
