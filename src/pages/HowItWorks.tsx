@@ -17,8 +17,7 @@ const HowItWorks = () => {
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/how-it-works" className="text-primary font-medium">Process Overview</Link>
-              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/apply">Apply Now</Link>
@@ -51,7 +50,7 @@ const HowItWorks = () => {
             </p>
           </div>
 
-          <div className="space-y-12">
+          <div className="space-y-6">
             {/* Step 1 */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-shrink-0">
@@ -91,7 +90,7 @@ const HowItWorks = () => {
             </div>
 
             {/* Connector Line */}
-            <div className="ml-10 border-l-2 border-border/30 h-12"></div>
+            <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
             {/* Step 2 */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -132,7 +131,7 @@ const HowItWorks = () => {
             </div>
 
             {/* Connector Line */}
-            <div className="ml-10 border-l-2 border-border/30 h-12"></div>
+            <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
             {/* Step 3 */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -173,7 +172,7 @@ const HowItWorks = () => {
             </div>
 
             {/* Connector Line */}
-            <div className="ml-10 border-l-2 border-border/30 h-12"></div>
+            <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
             {/* Step 4 */}
             <div className="flex flex-col md:flex-row gap-8 items-start">

@@ -17,8 +17,7 @@ const About = () => {
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-primary font-medium">About</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/apply">Apply Now</Link>
