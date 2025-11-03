@@ -20,6 +20,7 @@ const Pricing = lazy(() => import("./pages/Pricing"));
 const Programs = lazy(() => import("./pages/Programs"));
 const Apply = lazy(() => import("./pages/Apply"));
 const BookDiscovery = lazy(() => import("./pages/BookDiscovery"));
+const Onboarding = lazy(() => import("./pages/Onboarding"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/Admin"));
 const NotFound = lazy(() => import("./pages/NotFound"));
@@ -54,6 +55,7 @@ const App = () => (
                 <Route path="/programs" element={<Programs />} />
                 <Route path="/apply" element={<Apply />} />
                 <Route path="/book-discovery" element={<BookDiscovery />} />
+                <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/auth" element={<Auth />} />
                 <Route path="/admin" element={<ProtectedRoute><Admin /></ProtectedRoute>} />
                 {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}

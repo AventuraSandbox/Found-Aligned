@@ -45,7 +45,7 @@ const Index = () => {
                     <Link to="/auth">Sign In</Link>
                   </Button>
                   <Button variant="premium" size="sm" asChild>
-                    <Link to="/apply">Apply Now</Link>
+                    <Link to="/onboarding">Get Started</Link>
                   </Button>
                 </>
               )}
@@ -321,13 +321,13 @@ const Index = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/apply">
-                Apply Now
+              <Link to="/onboarding">
+                Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/book-discovery#top">Book a Discovery Call</Link>
+              <Link to="/our-approach">Learn More</Link>
             </Button>
           </div>
         </div>
@@ -364,10 +364,7 @@ const Index = () => {
               <h4 className="font-semibold text-primary mb-4">Connect</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
-                  <Link to="/apply" className="hover:text-primary transition-colors">Apply Now</Link>
-                </li>
-                <li>
-                  <Link to="/book-discovery#top" className="hover:text-primary transition-colors">Book Discovery Call</Link>
+                  <Link to="/onboarding" className="hover:text-primary transition-colors">Get Started</Link>
                 </li>
                 <li>
                   <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>

@@ -20,7 +20,7 @@ const OurApproach = () => {
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/onboarding">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -128,13 +128,13 @@ const OurApproach = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button variant="hero" size="xl" asChild>
-              <Link to="/apply">
-                Apply to Work With Us
+              <Link to="/onboarding">
+                Get Started
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
             </Button>
             <Button variant="outline" size="xl" asChild>
-              <Link to="/book-discovery">Book Discovery Call</Link>
+              <Link to="/about">Learn More About Us</Link>
             </Button>
           </div>
         </div>

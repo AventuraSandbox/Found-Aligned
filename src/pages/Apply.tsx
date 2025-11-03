@@ -13,9 +13,8 @@ import { useToast } from "@/hooks/use-toast";
 import { useState, useEffect } from "react";
 import { applicationFormSchema, type ApplicationFormData, sanitizeHtml } from "@/lib/validation";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
-import { checkClientRateLimit, getTurnstileToken } from "@/lib/security";
+import { checkClientRateLimit } from "@/lib/security";
 import { RATE_LIMIT_CONFIG } from "@/lib/constants";
-import TurnstileCaptcha from "@/components/TurnstileCaptcha";
 
 // Use the validated interface from validation.ts
 
@@ -60,26 +59,8 @@ const Apply = () => {
         expectations: data.expectations ? sanitizeHtml(data.expectations) : undefined,
       };
       
-      // Without Supabase, treat as success after CAPTCHA
+      // Without Supabase, treat as success
       logSecurityEvent('application_submission_success', { email: data.email });
-
-      // Send notification email
-      try {
-        const turnstileToken = getTurnstileToken();
-        if (!turnstileToken) {
-          toast({
-            variant: "destructive",
-            title: "Verification Required",
-            description: "Please complete the CAPTCHA verification.",
-          });
-          return;
-        }
-
-        // Email notification disabled without backend; skip
-      } catch (emailError) {
-        // Log error but don't fail the submission if email notification fails
-        handleError(emailError, 'notification email');
-      }
 
       toast({
         title: "Application Submitted!",
@@ -422,18 +403,6 @@ const Apply = () => {
                  </div>
                  {errors.termsConsent && <p className="text-destructive text-sm mt-1">{errors.termsConsent.message}</p>}
                </div>
-
-              {/* CAPTCHA Verification */}
-              <div className="space-y-4">
-                <Label className="text-base font-medium">Security Verification *</Label>
-                <TurnstileCaptcha 
-                  onVerify={(token) => console.log('CAPTCHA verified:', token)}
-                  onError={(error) => console.error('CAPTCHA error:', error)}
-                />
-                <p className="text-sm text-muted-foreground">
-                  Please complete the verification to submit your application.
-                </p>
-              </div>
 
               {/* Submit Button */}
               <div className="text-center pt-8">

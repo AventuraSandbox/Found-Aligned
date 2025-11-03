@@ -24,7 +24,7 @@ const Clients = () => {
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
-              <Link to="/apply">Apply Now</Link>
+              <Link to="/onboarding">Get Started</Link>
             </Button>
           </div>
         </div>
@@ -232,7 +232,7 @@ const Clients = () => {
             </p>
 
             <Button variant="hero" size="xl" asChild>
-              <Link to="/apply">
+              <Link to="/onboarding">
                 Apply for Founding Client Program
                 <ArrowRight className="ml-2 h-5 w-5" />
               </Link>
