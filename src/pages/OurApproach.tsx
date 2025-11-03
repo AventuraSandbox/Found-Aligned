@@ -16,7 +16,8 @@ const OurApproach = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/our-approach" className="text-primary font-medium">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/founding-clients" className="text-muted-foreground hover:text-primary transition-colors">Founding Clients</Link>
+              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/apply">Apply Now</Link>
