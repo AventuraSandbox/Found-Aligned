@@ -45,32 +45,32 @@ const OurApproach = () => {
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <Heart className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Emotionally Intelligent</h3>
-              <p className="text-muted-foreground leading-relaxed">We believe lasting love begins with self-awareness. Our process emphasizes emotional maturity, attachment styles, and genuine alignment over superficial attraction. We guide you to understand yourself deeply so you can recognize compatible partnership.</p>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Compatibility Over Chemistry</h3>
+              <p className="text-muted-foreground leading-relaxed">While attraction matters, we prioritize emotional alignment, shared values, and compatible life visions. We're looking for the person who fits your life, not just someone who gives you butterflies.</p>
             </Card>
 
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <Users className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Curated & Personal</h3>
-              <p className="text-muted-foreground leading-relaxed">No algorithms. No apps. Just thoughtful, human matchmaking tailored to your values, lifestyle, and vision for partnership. Every introduction is handpicked by your dedicated matchmaker who knows you personally.</p>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Quality Over Quantity</h3>
+              <p className="text-muted-foreground leading-relaxed">we would rather introduce you to three truly compatible people than dozens of mediocre matches. Every introduction is carefully vetted and persinally selected by someone who knows you.</p>
             </Card>
 
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <Shield className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Regionally Rooted</h3>
-              <p className="text-muted-foreground leading-relaxed">We understand Midwest culture, values, and lifestyle. Our network is carefully curated within Illinois, Wisconsin, Michigan, and Indiana for authentic local compatibility. We know these cities, their communities, and what makes relationships thrive here.</p>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Growth Over Perfection</h3>
+              <p className="text-muted-foreground leading-relaxed">We don't believe in "the perfect match." We believe in two emotionally healthy people willing to grow together. Our coaching helps you show up ready for that kind of partnership.</p>
             </Card>
 
             <Card className="p-10 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mb-8">
                 <MessageCircle className="h-10 w-10 text-primary" />
               </div>
-              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Transformation-Focused</h3>
-              <p className="text-muted-foreground leading-relaxed">Beyond introductions, we offer coaching and support to help you show up as your best self in dating and relationships. Our process includes feedback loops, emotional intelligence development, and personal growth alongside matchmaking.</p>
+              <h3 className="font-serif text-2xl font-semibold mb-6 text-primary">Partnership Over Transaction</h3>
+              <p className="text-muted-foreground leading-relaxed">This isn't a numbers game. We're invested in your success and committed to supporting you through the ups and downs of dating until you find your person.</p>
             </Card>
           </div>
         </div>

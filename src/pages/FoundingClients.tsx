@@ -4,7 +4,7 @@ import { ArrowRight, Star, Crown, Users, MessageCircle, Calendar, CheckCircle } 
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
 
-const FoundingClients = () => {
+const Clients = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
