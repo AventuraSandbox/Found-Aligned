@@ -154,7 +154,7 @@ Submitted: ${new Date().toLocaleString()}
           subject: `New Application - ${formData.firstName} ${formData.lastName}`,
           from_name: `${formData.firstName} ${formData.lastName}`,
           from_email: formData.email,
-          to_email: 'nkutik@gmail.com',
+          to_email: 'hello@foundandaligned.com',
           message: emailBody,
         }),
       });
