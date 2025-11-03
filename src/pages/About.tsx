@@ -35,9 +35,11 @@ const About = () => {
                 About Found & Aligned
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-                Born from the belief that life's second chapter deserves a first-class love story. We specialize in helping 
-                accomplished professionals 45+ find relationships that fit their lives, values, and vision—through human insight, 
-                not algorithms.
+              ound & Aligned was created for accomplished individuals ages 35-55 who've built meaningful 
+              lives and are ready for love that complements who they've become. We specialize in matchmaking 
+              that goes beyond compatibility to focus on true alignment: matching values, life visions, and 
+              emotional intelligence. Through human insight (not algorithms), 
+              personalized coaching, and genuine partnership, we help you find relationships that fit your life.
               </p>
             </div>
             <div className="relative">
@@ -68,29 +70,31 @@ const About = () => {
 
           <div className="prose prose-lg max-w-none text-muted-foreground leading-relaxed space-y-6">
             <p>
-              Found & Aligned was created for the discerning individual who has built a full, intentional life 
-              and is ready for love that complements—not completes—who they already are. We understand that 
-              when you've invested in your personal growth, career, and values, you don't want to settle for 
-              surface-level connections or waste time on incompatible matches.
+            Found & Aligned is created for people who've built successful lives and are ready for love
+             that complements (not completes) who they already are.
             </p>
 
             <p>
-              Our founder brings together expertise in psychology, relationship dynamics, and an intuitive 
+            If you're reading this, you've probably tried the apps. Maybe you've even worked with other matchmakers. 
+            You know what you want, what you don't want, you're emotionally self-aware, 
+            and you're done wasting time on surface-level connections or incompatible matches.
+            </p>
+
+            <p>
+              We bring together expertise in psychology, relationship dynamics, and an intuitive 
               understanding of what makes long-term partnerships thrive. Having witnessed too many intelligent, 
               emotionally healthy people struggle to find their person through conventional dating methods, 
-              she created Found & Aligned as an alternative that honors the complexity of modern love.
+              we created Found & Aligned as an alternative that honors the complexity of modern love.
             </p>
 
             <p>
-              We believe that the best relationships are built on more than attraction or shared interests—they're 
-              built on aligned values, complementary life visions, and the kind of emotional intelligence that 
-              creates lasting intimacy. Our approach goes beyond compatibility to focus on alignment: that deeper 
-              resonance that makes a relationship not just work, but flourish.
+            So we built something different: A matchmaking experience rooted in emotional depth, human intuition, and genuine partnership. We don't just look for compatibility. 
+            We look for alignment - that deeper resonance that makes a relationship not just work, but flourish.
             </p>
 
             <p>
-              Every client we work with is someone who understands that finding the right person is an investment—in 
-              time, energy, and yes, financial resources—but who also knows that the alternative is settling for less 
+              Every client we work with is someone who understands that finding the right person is an investment: In 
+              time, energy, and yes, financial resources, but who also knows that the alternative is settling for less 
               than they deserve or continuing to navigate the modern dating landscape alone.
             </p>
           </div>
@@ -159,7 +163,7 @@ const About = () => {
             <div className="text-center">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">Discretion & Privacy</h3>
               <p className="text-muted-foreground leading-relaxed">
-                Your journey to love should be private. No profiles, no databases, no public visibility—just thoughtful, 
+                Your journey to love should be private. No profiles, no databases, no public visibility - just thoughtful, 
                 confidential introductions.
               </p>
             </div>
@@ -187,10 +191,10 @@ const About = () => {
       <section className="py-16 lg:py-24 bg-secondary/30">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <blockquote className="text-2xl sm:text-3xl font-serif italic text-primary mb-8 leading-relaxed">
-            "This isn't about finding someone to complete you—it's about finding someone 
+            "This isn't about finding someone to complete you - it's about finding someone 
             who complements the whole person you already are."
           </blockquote>
-          <cite className="text-muted-foreground">— Our Founding Philosophy</cite>
+          <cite className="text-muted-foreground"> - Our Founding Philosophy</cite>
         </div>
       </section>
 
