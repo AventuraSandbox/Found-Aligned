@@ -61,11 +61,32 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Initial Consultation & Discovery
+                  Discovery: Begin with Understanding
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  We begin with an in-depth discovery session to understand who you are, what you value, and what you're truly looking for in a partner. This isn't a questionnaire—it's a meaningful conversation about your life, your goals, and your relationship vision.
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  We start with a complimentary discovery call to understand your relationship history, values, and vision for partnership. If we're a good fit, you'll complete a comprehensive assessment covering compatibility factors, attachment styles, and what matters most to you in a partner.
                 </p>
+                <div className="space-y-3">
+                  <p className="font-semibold text-primary mb-3">What happens:</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Complimentary 30-minute discovery call</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>In-depth compatibility assessment</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Personalized "Alignment Blueprint"</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Inclusion in our curated network</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -81,11 +102,32 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Personalized Matchmaking Strategy
+                  Matching: Thoughtful Introductions, Not Algorithms
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Based on your consultation, we develop a custom search strategy tailored to your unique needs. We scout our network and beyond to find matches who align with your values, lifestyle, and long-term vision—not just your checklist.
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Your dedicated matchmaker personally evaluates every potential match based on emotional alignment, lifestyle compatibility, and shared values. We introduce you to people we genuinely believe could be your person—complete with context about why we think there's potential.
                 </p>
+                <div className="space-y-3">
+                  <p className="font-semibold text-primary mb-3">What happens:</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Dedicated regional or senior matchmaker assigned</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Hand-selected introductions (no apps, no algorithms)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Pre-date coaching and preparation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Custom date planning support</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -101,11 +143,32 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Thorough Vetting & Introduction
+                  Dating with Support: You are Never Alone in This
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Every potential match is carefully vetted through in-person meetings, background verification, and values alignment assessment. When we make an introduction, we provide context about why we see potential and guidance on how to approach the first date.
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  After each introduction, we check in to hear how it went. What felt right? What didn't? We use your feedback to continuously refine future matches and provide coaching to help you show up as your best self.
                 </p>
+                <div className="space-y-3">
+                  <p className="font-semibold text-primary mb-3">What happens:</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Post-date feedback sessions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Ongoing emotional intelligence coaching</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Match refinement based on real experiences</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Relationship guidance as things progress</span>
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
 
@@ -121,33 +184,57 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Ongoing Support & Coaching
+                  Growth & Transformation: Beyond Matchmaking
                 </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  Before and after each date, we're here to offer guidance, process your experience, and help you navigate the complexities of building a relationship. You'll have direct access to us throughout your journey, not just between introductions.
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  Whether you're working on your dating presence, processing past relationships, or building confidence, we offer additional support to ensure you're emotionally ready for lasting love.
                 </p>
-              </div>
-            </div>
-
-            {/* Connector Line */}
-            <div className="ml-10 border-l-2 border-border/30 h-12"></div>
-
-            {/* Step 5 */}
-            <div className="flex flex-col md:flex-row gap-8 items-start">
-              <div className="flex-shrink-0">
-                <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
-                  <span className="text-3xl font-serif font-bold text-primary">05</span>
+                <div className="space-y-3">
+                  <p className="font-semibold text-primary mb-3">Optional enhancements include:</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Image & Presence Coaching</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Emotional Intelligence Mastery Sessions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Personal Brand Photoshoot</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Access to Found & Aligned Circle events</span>
+                    </li>
+                  </ul>
                 </div>
               </div>
-              <div className="flex-1">
-                <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Relationship Success & Beyond
-                </h3>
-                <p className="text-muted-foreground leading-relaxed">
-                  When you meet someone promising, we continue to support you as the relationship develops. Our goal isn't just to make a match—it's to help you build a lasting partnership. We're invested in your long-term success.
-                </p>
-              </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16 lg:py-24">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
+            Ready to Get Started?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
+            Take the first step toward finding your person with our personalized matchmaking process.
+          </p>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Button variant="hero" size="xl" asChild>
+              <Link to="/apply">
+                Apply Now
+                <ArrowRight className="ml-2 h-5 w-5" />
+              </Link>
+            </Button>
+            <Button variant="outline" size="xl" asChild>
+              <Link to="/book-discovery">Book a Consultation</Link>
+            </Button>
           </div>
         </div>
       </section>
@@ -189,6 +276,26 @@ const HowItWorks = () => {
               </h3>
               <p className="text-muted-foreground leading-relaxed">
                 [FAQ Answer 3 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+              </p>
+            </Card>
+
+            {/* FAQ 4 */}
+            <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
+              <h3 className="font-serif text-xl font-semibold text-primary mb-4">
+                [FAQ Question 4 - Placeholder]
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                [FAQ Answer 4 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+              </p>
+            </Card>
+
+            {/* FAQ 5 */}
+            <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
+              <h3 className="font-serif text-xl font-semibold text-primary mb-4">
+                [FAQ Question 5 - Placeholder]
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                [FAQ Answer 5 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
               </p>
             </Card>
           </div>
