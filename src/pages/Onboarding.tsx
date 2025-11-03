@@ -22,6 +22,9 @@ interface OnboardingData {
   seekingGender: string;
   age: string;
   location: string;
+  
+  // Security: Honeypot field (hidden from users, catches bots)
+  website?: string;
 }
 
 const Onboarding = () => {
@@ -37,7 +40,8 @@ const Onboarding = () => {
     gender: "",
     seekingGender: "",
     age: "",
-    location: ""
+    location: "",
+    website: "" // Honeypot field
   });
 
   const updateField = (field: keyof OnboardingData, value: string) => {
@@ -140,6 +144,15 @@ Submitted: ${new Date().toLocaleString()}
 
       logSecurityEvent('onboarding_submission_started', { email: formData.email });
 
+      // Security: Check honeypot field (bots will fill this, humans won't see it)
+      if (formData.website) {
+        console.warn('Bot detected - honeypot field filled');
+        logSecurityEvent('bot_submission_blocked', { email: formData.email });
+        // Silently fail - don't tell bot it was caught
+        setIsSubmitting(false);
+        return;
+      }
+
       // Check if Web3Forms access key is configured
       const accessKey = import.meta.env.VITE_WEB3FORMS_ACCESS_KEY;
       if (!accessKey || accessKey === 'YOUR_WEB3FORMS_ACCESS_KEY') {
@@ -170,6 +183,10 @@ Submitted: ${new Date().toLocaleString()}
           from_email: formData.email,
           to_email: 'hello@foundandaligned.com',
           message: emailBody,
+          // Security: Bot spam filtering
+          botcheck: false,
+          // Security: Honeypot field (if filled, it's a bot)
+          honey: formData.website || '',
         }),
       });
 
@@ -244,6 +261,17 @@ Submitted: ${new Date().toLocaleString()}
       subtitle: "Let's start with your contact information.",
       content: (
         <div className="space-y-6">
+          {/* Honeypot field - Hidden from users, catches bots */}
+          <input
+            type="text"
+            name="website"
+            value={formData.website || ''}
+            onChange={(e) => updateField('website', e.target.value)}
+            style={{ display: 'none' }}
+            tabIndex={-1}
+            autoComplete="off"
+          />
+          
           <div className="grid md:grid-cols-2 gap-4">
             <div>
               <Label htmlFor="firstName" className="text-base">First Name *</Label>
