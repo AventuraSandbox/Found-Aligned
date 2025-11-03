@@ -2,49 +2,26 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { ArrowRight, ArrowLeft, Heart, Check } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
 import { checkClientRateLimit } from "@/lib/security";
-import { sanitizeHtml } from "@/lib/validation";
 import { RATE_LIMIT_CONFIG } from "@/lib/constants";
 
 interface OnboardingData {
-  // Step 1: Basic Info
+  // Basic Info
   firstName: string;
   lastName: string;
   email: string;
   phone: string;
   
-  // Step 2: Demographics
+  // Simple Questions (Tawkify-style)
+  gender: string;
+  seekingGender: string;
   age: string;
   location: string;
-  gender: string;
-  
-  // Step 3: Professional
-  profession: string;
-  education: string;
-  
-  // Step 4: Relationship Goals
-  relationshipGoal: string;
-  timeline: string;
-  relationshipStatus: string;
-  
-  // Step 5: Partner Preferences
-  seekingGender: string;
-  importantQualities: string;
-  
-  // Step 6: Values & Lifestyle
-  coreValues: string;
-  lifestyle: string;
-  
-  // Step 7: Investment & Next Steps
-  investmentLevel: string;
-  commitmentLevel: string;
-  preferredNextStep: string;
 }
 
 const Onboarding = () => {
@@ -57,21 +34,10 @@ const Onboarding = () => {
     lastName: "",
     email: "",
     phone: "",
-    age: "",
-    location: "",
     gender: "",
-    profession: "",
-    education: "",
-    relationshipGoal: "",
-    timeline: "",
-    relationshipStatus: "",
     seekingGender: "",
-    importantQualities: "",
-    coreValues: "",
-    lifestyle: "",
-    investmentLevel: "",
-    commitmentLevel: "",
-    preferredNextStep: ""
+    age: "",
+    location: ""
   });
 
   const updateField = (field: keyof OnboardingData, value: string) => {
@@ -115,37 +81,13 @@ const Onboarding = () => {
         return { isValid: true, message: "" };
       
       case 1:
-        if (!formData.age || !formData.location || !formData.gender) {
+        if (!formData.gender || !formData.seekingGender) {
           return { isValid: false, message: "Please complete all fields" };
         }
         return { isValid: true, message: "" };
       
       case 2:
-        if (!formData.profession || !formData.education) {
-          return { isValid: false, message: "Please complete all fields" };
-        }
-        return { isValid: true, message: "" };
-      
-      case 3:
-        if (!formData.relationshipGoal || !formData.timeline || !formData.relationshipStatus) {
-          return { isValid: false, message: "Please complete all fields" };
-        }
-        return { isValid: true, message: "" };
-      
-      case 4:
-        if (!formData.seekingGender || !formData.importantQualities) {
-          return { isValid: false, message: "Please complete all fields" };
-        }
-        return { isValid: true, message: "" };
-      
-      case 5:
-        if (!formData.coreValues || !formData.lifestyle) {
-          return { isValid: false, message: "Please complete all fields" };
-        }
-        return { isValid: true, message: "" };
-      
-      case 6:
-        if (!formData.investmentLevel || !formData.commitmentLevel || !formData.preferredNextStep) {
+        if (!formData.age || !formData.location) {
           return { isValid: false, message: "Please complete all fields" };
         }
         return { isValid: true, message: "" };
@@ -156,92 +98,27 @@ const Onboarding = () => {
   };
 
   const formatEmailContent = (data: OnboardingData): string => {
-    const ageRangeLabel = data.age;
-    const educationLabels: Record<string, string> = {
-      'bachelors': "Bachelor's Degree",
-      'masters': "Master's Degree",
-      'doctoral': "Doctoral Degree",
-      'professional': "Professional Degree",
-      'other': "Other"
-    };
-    const relationshipGoalLabels: Record<string, string> = {
-      'marriage': 'Marriage',
-      'long-term': 'Long-term committed relationship',
-      'partnership': 'Life partnership',
-      'exploring': 'Exploring serious relationships'
-    };
-    const timelineLabels: Record<string, string> = {
-      'asap': 'As soon as possible',
-      '6months': 'Within 6 months',
-      '1year': 'Within 1 year',
-      'flexible': "Flexible, when it's right"
-    };
-    const investmentLabels: Record<string, string> = {
-      'ready': "Yes, I'm ready to invest $7,500+",
-      'considering': "I'm considering it",
-      'learn-more': "I'd like to learn more about pricing"
-    };
-    const commitmentLabels: Record<string, string> = {
-      'fully': 'Fully committed to the process',
-      'very': 'Very committed',
-      'somewhat': 'Somewhat committed',
-      'exploring': 'Still exploring options'
-    };
-    const nextStepLabels: Record<string, string> = {
-      'call': 'Schedule a discovery call to learn more',
-      'review': 'Have someone review my application',
-      'start': "I'm ready to start immediately"
-    };
-
     return `
-New Onboarding Application Submission
-=====================================
+New Application Submission - Found & Aligned
+=============================================
 
-BASIC INFORMATION
------------------
+CONTACT INFORMATION
+-------------------
 Name: ${data.firstName} ${data.lastName}
 Email: ${data.email}
 Phone: ${data.phone}
 
-DEMOGRAPHICS
-------------
-Age Range: ${ageRangeLabel}
-Location: ${data.location}
+ABOUT YOU
+---------
 Gender: ${data.gender}
+Age Range: ${data.age}
+Location: ${data.location}
 
-PROFESSIONAL BACKGROUND
------------------------
-Profession: ${data.profession}
-Education: ${educationLabels[data.education] || data.education}
-
-RELATIONSHIP GOALS
+WHO YOU'RE SEEKING
 ------------------
-Primary Goal: ${relationshipGoalLabels[data.relationshipGoal] || data.relationshipGoal}
-Timeline: ${timelineLabels[data.timeline] || data.timeline}
-Current Relationship Status: ${data.relationshipStatus}
+Looking for: ${data.seekingGender}
 
-PARTNER PREFERENCES
--------------------
-Open to Dating: ${data.seekingGender}
-
-Important Qualities in a Partner:
-${data.importantQualities}
-
-VALUES & LIFESTYLE
-------------------
-Core Values:
-${data.coreValues}
-
-Ideal Lifestyle:
-${data.lifestyle}
-
-INVESTMENT & COMMITMENT
------------------------
-Investment Readiness: ${investmentLabels[data.investmentLevel] || data.investmentLevel}
-Commitment Level: ${commitmentLabels[data.commitmentLevel] || data.commitmentLevel}
-Preferred Next Step: ${nextStepLabels[data.preferredNextStep] || data.preferredNextStep}
-
-=====================================
+=============================================
 Submitted: ${new Date().toLocaleString()}
 `.trim();
   };
@@ -263,47 +140,27 @@ Submitted: ${new Date().toLocaleString()}
 
       logSecurityEvent('onboarding_submission_started', { email: formData.email });
 
-      // Sanitize text fields
-      const sanitizedData = {
-        ...formData,
-        importantQualities: sanitizeHtml(formData.importantQualities),
-        coreValues: sanitizeHtml(formData.coreValues),
-        lifestyle: sanitizeHtml(formData.lifestyle)
-      };
-
       // Format email content with questions and answers
-      const emailBody = formatEmailContent(sanitizedData);
+      const emailBody = formatEmailContent(formData);
 
-      // Send email using mailto (opens user's email client)
-      // For production, replace this with a proper email service
-      const mailtoLink = `mailto:hello@foundandaligned.com?subject=New Onboarding Application - ${sanitizedData.firstName} ${sanitizedData.lastName}&body=${encodeURIComponent(emailBody)}`;
-      
-      // Alternative: Use Web3Forms or similar service
-      // For now, we'll use fetch to send to a simple endpoint
-      try {
-        // You can replace this with Web3Forms, Formspree, or your own endpoint
-        const response = await fetch('https://api.web3forms.com/submit', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY',
-            subject: `New Onboarding Application - ${sanitizedData.firstName} ${sanitizedData.lastName}`,
-            from_name: `${sanitizedData.firstName} ${sanitizedData.lastName}`,
-            from_email: sanitizedData.email,
-            to_email: 'hello@foundandaligned.com',
-            message: emailBody,
-          }),
-        });
+      // Send email via Web3Forms
+      const response = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          access_key: import.meta.env.VITE_WEB3FORMS_ACCESS_KEY || 'YOUR_WEB3FORMS_ACCESS_KEY',
+          subject: `New Application - ${formData.firstName} ${formData.lastName}`,
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          from_email: formData.email,
+          to_email: 'nkutik@gmail.com',
+          message: emailBody,
+        }),
+      });
 
-        if (!response.ok) {
-          throw new Error('Email service failed');
-        }
-      } catch (emailError) {
-        // Fallback: Open mailto link
-        console.error('Email service error, falling back to mailto:', emailError);
-        window.location.href = mailtoLink;
+      if (!response.ok) {
+        throw new Error('Failed to send application. Please try again.');
       }
 
       logSecurityEvent('onboarding_submission_success', { email: formData.email });
@@ -357,8 +214,8 @@ Submitted: ${new Date().toLocaleString()}
   const steps = [
     // Step 0: Basic Information
     {
-      title: "Let's get started!",
-      subtitle: "First, tell us a bit about yourself.",
+      title: "We can't wait to help you find your person",
+      subtitle: "Let's start with your contact information.",
       content: (
         <div className="space-y-6">
           <div className="grid md:grid-cols-2 gap-4">
@@ -409,16 +266,55 @@ Submitted: ${new Date().toLocaleString()}
       )
     },
     
-    // Step 1: Demographics
+    // Step 1: Gender & Preferences
     {
-      title: "Tell us about yourself",
-      subtitle: "This helps us understand who you are.",
+      title: "What's your gender?",
+      subtitle: "Your answers help us determine matches in our community.",
       content: (
-        <div className="space-y-6">
+        <div className="space-y-8">
           <div>
-            <Label className="text-base mb-3 block">What's your age range? *</Label>
+            <Label className="text-base mb-4 block">What's your gender? *</Label>
+            <div className="space-y-3">
+              {['Woman', 'Man', 'Trans Woman', 'Trans Man', 'Intersex', 'Non-binary/Non-conforming'].map((gender) => (
+                <RadioOption
+                  key={gender}
+                  value={gender}
+                  label={gender}
+                  selected={formData.gender === gender}
+                  onClick={() => updateField('gender', gender)}
+                />
+              ))}
+            </div>
+          </div>
+
+          <div>
+            <Label className="text-base mb-4 block">Who are you open to dating? *</Label>
+            <div className="space-y-3">
+              {['Women', 'Men', 'Trans Women', 'Trans Men', 'Intersex', 'Non-binary/Non-conforming', 'Open to all'].map((seeking) => (
+                <RadioOption
+                  key={seeking}
+                  value={seeking}
+                  label={seeking}
+                  selected={formData.seekingGender === seeking}
+                  onClick={() => updateField('seekingGender', seeking)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    },
+
+    // Step 2: Age & Location
+    {
+      title: "Just a bit more about you",
+      subtitle: "Help us find the best matches in your area.",
+      content: (
+        <div className="space-y-8">
+          <div>
+            <Label className="text-base mb-4 block">What's your age range? *</Label>
             <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-              {['25-29', '30-34', '35-39', '40-44', '45-49', '50+'].map((age) => (
+              {['18-24', '25-29', '30-34', '35-39', '40-44', '45-49', '50-54', '55-59', '60+'].map((age) => (
                 <RadioOption
                   key={age}
                   value={age}
@@ -439,271 +335,6 @@ Submitted: ${new Date().toLocaleString()}
               className="mt-2 h-12"
               placeholder="City, State"
             />
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">What's your gender? *</Label>
-            <div className="grid md:grid-cols-2 gap-3">
-              {['Woman', 'Man', 'Non-binary', 'Prefer not to say'].map((gender) => (
-                <RadioOption
-                  key={gender}
-                  value={gender}
-                  label={gender}
-                  selected={formData.gender === gender}
-                  onClick={() => updateField('gender', gender)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )
-    },
-
-    // Step 2: Professional Background
-    {
-      title: "Your professional life",
-      subtitle: "Help us understand your background.",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <Label htmlFor="profession" className="text-base">What do you do professionally? *</Label>
-            <Input
-              id="profession"
-              value={formData.profession}
-              onChange={(e) => updateField('profession', e.target.value)}
-              className="mt-2 h-12"
-              placeholder="Your profession or industry"
-            />
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">What's your education level? *</Label>
-            <div className="space-y-3">
-              {[
-                { value: 'bachelors', label: "Bachelor's Degree" },
-                { value: 'masters', label: "Master's Degree" },
-                { value: 'doctoral', label: "Doctoral Degree" },
-                { value: 'professional', label: "Professional Degree" },
-                { value: 'other', label: "Other" }
-              ].map((edu) => (
-                <RadioOption
-                  key={edu.value}
-                  value={edu.value}
-                  label={edu.label}
-                  selected={formData.education === edu.value}
-                  onClick={() => updateField('education', edu.value)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )
-    },
-
-    // Step 3: Relationship Goals
-    {
-      title: "What are you looking for?",
-      subtitle: "Let's understand your relationship goals.",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <Label className="text-base mb-3 block">What's your primary goal? *</Label>
-            <div className="space-y-3">
-              {[
-                { value: 'marriage', label: 'Marriage' },
-                { value: 'long-term', label: 'Long-term committed relationship' },
-                { value: 'partnership', label: 'Life partnership' },
-                { value: 'exploring', label: 'Exploring serious relationships' }
-              ].map((goal) => (
-                <RadioOption
-                  key={goal.value}
-                  value={goal.value}
-                  label={goal.label}
-                  selected={formData.relationshipGoal === goal.value}
-                  onClick={() => updateField('relationshipGoal', goal.value)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">What's your timeline? *</Label>
-            <div className="space-y-3">
-              {[
-                { value: 'asap', label: 'As soon as possible' },
-                { value: '6months', label: 'Within 6 months' },
-                { value: '1year', label: 'Within 1 year' },
-                { value: 'flexible', label: "Flexible, when it's right" }
-              ].map((time) => (
-                <RadioOption
-                  key={time.value}
-                  value={time.value}
-                  label={time.label}
-                  selected={formData.timeline === time.value}
-                  onClick={() => updateField('timeline', time.value)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">Current relationship status? *</Label>
-            <div className="space-y-3">
-              {['Single', 'Divorced', 'Widowed', 'Separated'].map((status) => (
-                <RadioOption
-                  key={status}
-                  value={status}
-                  label={status}
-                  selected={formData.relationshipStatus === status}
-                  onClick={() => updateField('relationshipStatus', status)}
-                />
-              ))}
-            </div>
-          </div>
-        </div>
-      )
-    },
-
-    // Step 4: Partner Preferences
-    {
-      title: "Who are you looking for?",
-      subtitle: "Tell us about your ideal partner.",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <Label className="text-base mb-3 block">Who are you open to dating? *</Label>
-            <div className="grid md:grid-cols-2 gap-3">
-              {['Women', 'Men', 'Non-binary individuals', 'Open to all'].map((seeking) => (
-                <RadioOption
-                  key={seeking}
-                  value={seeking}
-                  label={seeking}
-                  selected={formData.seekingGender === seeking}
-                  onClick={() => updateField('seekingGender', seeking)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label htmlFor="importantQualities" className="text-base">
-              What qualities are most important in a partner? *
-            </Label>
-            <Textarea
-              id="importantQualities"
-              value={formData.importantQualities}
-              onChange={(e) => updateField('importantQualities', e.target.value)}
-              className="mt-2 min-h-[120px]"
-              placeholder="Describe the emotional, intellectual, and character qualities you value most..."
-            />
-          </div>
-        </div>
-      )
-    },
-
-    // Step 5: Values & Lifestyle
-    {
-      title: "Your values matter",
-      subtitle: "Help us find someone who shares your worldview.",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <Label htmlFor="coreValues" className="text-base">
-              What are your core values? *
-            </Label>
-            <Textarea
-              id="coreValues"
-              value={formData.coreValues}
-              onChange={(e) => updateField('coreValues', e.target.value)}
-              className="mt-2 min-h-[120px]"
-              placeholder="What principles guide your life and decisions?..."
-            />
-          </div>
-
-          <div>
-            <Label htmlFor="lifestyle" className="text-base">
-              Describe your ideal lifestyle *
-            </Label>
-            <Textarea
-              id="lifestyle"
-              value={formData.lifestyle}
-              onChange={(e) => updateField('lifestyle', e.target.value)}
-              className="mt-2 min-h-[120px]"
-              placeholder="How do you like to spend your time? What does your ideal day look like?..."
-            />
-          </div>
-        </div>
-      )
-    },
-
-    // Step 6: Investment & Next Steps
-    {
-      title: "Investment & commitment",
-      subtitle: "Let's discuss how we'll work together.",
-      content: (
-        <div className="space-y-6">
-          <div>
-            <Label className="text-base mb-3 block">
-              Are you prepared to invest in premium matchmaking? *
-            </Label>
-            <div className="space-y-3">
-              {[
-                { value: 'ready', label: "Yes, I'm ready to invest $7,500+" },
-                { value: 'considering', label: "I'm considering it" },
-                { value: 'learn-more', label: "I'd like to learn more about pricing" }
-              ].map((inv) => (
-                <RadioOption
-                  key={inv.value}
-                  value={inv.value}
-                  label={inv.label}
-                  selected={formData.investmentLevel === inv.value}
-                  onClick={() => updateField('investmentLevel', inv.value)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">
-              How committed are you to the process? *
-            </Label>
-            <div className="space-y-3">
-              {[
-                { value: 'fully', label: 'Fully committed to the process' },
-                { value: 'very', label: 'Very committed' },
-                { value: 'somewhat', label: 'Somewhat committed' },
-                { value: 'exploring', label: 'Still exploring options' }
-              ].map((com) => (
-                <RadioOption
-                  key={com.value}
-                  value={com.value}
-                  label={com.label}
-                  selected={formData.commitmentLevel === com.value}
-                  onClick={() => updateField('commitmentLevel', com.value)}
-                />
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <Label className="text-base mb-3 block">
-              What would you like as your next step? *
-            </Label>
-            <div className="space-y-3">
-              {[
-                { value: 'call', label: 'Schedule a discovery call to learn more' },
-                { value: 'review', label: 'Have someone review my application' },
-                { value: 'start', label: "I'm ready to start immediately" }
-              ].map((next) => (
-                <RadioOption
-                  key={next.value}
-                  value={next.value}
-                  label={next.label}
-                  selected={formData.preferredNextStep === next.value}
-                  onClick={() => updateField('preferredNextStep', next.value)}
-                />
-              ))}
-            </div>
           </div>
         </div>
       )
