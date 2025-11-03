@@ -23,8 +23,8 @@ const Index = () => {
               Found & Aligned
             </Link>
             <div className="hidden md:flex space-x-8">
-              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
@@ -266,46 +266,6 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Founding Client Invitation */}
-      <section id="clients" className="py-16 lg:py-24">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-          <div className="bg-gradient-accent p-12 rounded-3xl shadow-elegant border border-accent/30">
-            <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
-              Founding Client Experience
-            </h2>
-            <p className="text-lg text-muted-foreground mb-8 leading-relaxed">
-              Join our exclusive founding client program. Limited availability for discerning individuals 
-              ready to invest in finding their person through our premium, white-glove service.
-            </p>
-            
-            <div className="grid md:grid-cols-3 gap-6 mb-8">
-              <div className="text-left">
-                <h4 className="font-semibold text-primary mb-2">1:1 Onboarding</h4>
-                <p className="text-muted-foreground text-sm">Comprehensive lifestyle and values assessment</p>
-              </div>
-              <div className="text-left">
-                <h4 className="font-semibold text-primary mb-2">Personal Transformation & Coaching</h4>
-                <p className="text-muted-foreground text-sm">Image & Presence Coaching, Emotional Intelligence Mastery Sessions, Personal Brand Dating Photoshoot</p>
-              </div>
-              <div className="text-left">
-                <h4 className="font-semibold text-primary mb-2">White-Glove Support</h4>
-                <p className="text-muted-foreground text-sm">Ongoing relationship guidance and coaching</p>
-              </div>
-            </div>
-
-            <div className="text-center">
-              <p className="text-2xl font-serif font-semibold text-primary mb-6">Investment: $7,500</p>
-              <Button variant="hero" size="xl" asChild>
-                <Link to="/apply">
-                  Apply for Founding Client Program
-                  <ArrowRight className="ml-2 h-5 w-5" />
-                </Link>
-              </Button>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* About the Founder */}
       <section id="about" className="py-16 lg:py-24 bg-secondary/30">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
@@ -392,7 +352,6 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-primary mb-4">Services</h4>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Founding Client Program</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Discovery Interview</a></li>
                 <li><a href="#" className="hover:text-primary transition-colors">Relationship Coaching</a></li>
                 <li>

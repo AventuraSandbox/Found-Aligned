@@ -14,8 +14,8 @@ const About = () => {
               Found & Aligned
             </Link>
             <div className="hidden md:flex space-x-8">
-              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-primary font-medium">About</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
