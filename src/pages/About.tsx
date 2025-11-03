@@ -16,6 +16,7 @@ const About = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-primary font-medium">About</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
               <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
             </div>
@@ -35,7 +36,7 @@ const About = () => {
                 About Found & Aligned
               </h1>
               <p className="text-lg sm:text-xl text-muted-foreground leading-relaxed">
-              ound & Aligned was created for accomplished individuals ages 35-55 who've built meaningful 
+              Found & Aligned was created for accomplished individuals ages 35-55 who've built meaningful 
               lives and are ready for love that complements who they've become. We specialize in matchmaking 
               that goes beyond compatibility to focus on true alignment: matching values, life visions, and 
               emotional intelligence. Through human insight (not algorithms), 

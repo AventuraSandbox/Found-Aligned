@@ -20,7 +20,9 @@ const Clients = () => {
             <div className="hidden md:flex space-x-8">
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/founding-clients" className="text-primary font-medium">Founding Clients</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
+              <Link to="/programs" className="text-muted-foreground hover:text-primary transition-colors">Programs</Link>
+              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Pricing</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/apply">Apply Now</Link>
@@ -29,28 +31,8 @@ const Clients = () => {
         </div>
       </nav>
 
-      {/* Hero Section */}
-      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24 bg-gradient-hero">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center">
-          <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center mx-auto mb-8">
-            <Crown className="h-10 w-10 text-primary" />
-          </div>
-          <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-bold text-primary mb-6">
-            Founding Client Experience
-          </h1>
-          <p className="text-lg sm:text-xl text-muted-foreground mb-8 max-w-3xl mx-auto leading-relaxed">
-            Join our exclusive funding client program. Limited spots for an exclusive, white-glove matchmaking experience for 
-            people who are serious about finding love and ready to invest in making it happen.
-          </p>
-          <div className="inline-flex items-center gap-2 bg-accent/50 px-6 py-2 rounded-full text-primary font-medium">
-            <Star className="h-4 w-4" />
-            Limited to 12 Founding Clients
-          </div>
-        </div>
-      </section>
-
       {/* What's Included */}
-      <section className="py-16 lg:py-24">
+      <section className="pt-24 pb-16 lg:pt-32 lg:pb-24">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <div className="text-center mb-16">
             <h2 className="font-serif text-3xl sm:text-4xl font-bold text-primary mb-6">
@@ -317,4 +299,4 @@ const Clients = () => {
   );
 };
 
-export default FoundingClients;
+export default Clients;
