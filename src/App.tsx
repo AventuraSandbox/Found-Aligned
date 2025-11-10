@@ -16,8 +16,6 @@ const AddOns = lazy(() => import("./pages/AddOns"));
 const Regions = lazy(() => import("./pages/Regions"));
 const Contact = lazy(() => import("./pages/Contact"));
 const About = lazy(() => import("./pages/About"));
-const Pricing = lazy(() => import("./pages/Pricing"));
-const Programs = lazy(() => import("./pages/Programs"));
 const Onboarding = lazy(() => import("./pages/Onboarding"));
 const Auth = lazy(() => import("./pages/Auth"));
 const Admin = lazy(() => import("./pages/Admin"));
@@ -49,8 +47,8 @@ const App = () => (
                 <Route path="/regions" element={<Regions />} />
                 <Route path="/contact" element={<Contact />} />
                 <Route path="/about" element={<About />} />
-                <Route path="/pricing" element={<Pricing />} />
-                <Route path="/programs" element={<Programs />} />
+                <Route path="/pricing" element={<Services />} />
+                <Route path="/programs" element={<Services />} />
                 <Route path="/onboarding" element={<Onboarding />} />
                 <Route path="/apply" element={<Onboarding />} />
                 <Route path="/book-discovery" element={<Onboarding />} />

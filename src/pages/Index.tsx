@@ -9,9 +9,14 @@ import heroCouple from "@/assets/hero-couple.jpg";
 import lifestyleWomanAA from "@/assets/lifestyle-woman-aa.jpg";
 import lifestyleMan from "@/assets/lifestyle-man.jpg";
 import professionalBlondeWoman from "@/assets/professional-blonde-woman.jpg";
+import { useEffect } from "react";
 
 const Index = () => {
   const { user, signOut } = useAuth();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="min-h-screen bg-background">
@@ -26,7 +31,7 @@ const Index = () => {
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+              <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <div className="flex items-center gap-4">
               <ThemeToggle />
@@ -336,10 +341,14 @@ const Index = () => {
             <div>
               <h4 className="font-semibold text-primary mb-4">Services</h4>
               <ul className="space-y-2 text-muted-foreground">
-                <li><a href="#" className="hover:text-primary transition-colors">Discovery Interview</a></li>
-                <li><a href="#" className="hover:text-primary transition-colors">Relationship Coaching</a></li>
                 <li>
-                  <Link to="/programs" className="hover:text-primary transition-colors">Programs</Link>
+                  <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
                 </li>
               </ul>
             </div>

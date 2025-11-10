@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const Services = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Our Services — Found & Aligned";
     const desc = "Personalized matchmaking designed for your unique journey";
     let tag = document.querySelector('meta[name="description"]');

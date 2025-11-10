@@ -4,7 +4,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { ArrowRight, ArrowLeft, Heart, Check } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useToast } from "@/hooks/use-toast";
 import { handleError, logSecurityEvent } from "@/lib/errorHandler";
 import { checkClientRateLimit } from "@/lib/security";
@@ -39,6 +39,11 @@ const Onboarding = () => {
   const navigate = useNavigate();
   const [currentStep, setCurrentStep] = useState(0);
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  // Scroll to top when component mounts
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [formData, setFormData] = useState<OnboardingData>({
     firstName: "",
     lastName: "",
@@ -470,7 +475,7 @@ Submitted: ${new Date().toLocaleString()}
               value={formData.zipcode}
               onChange={(e) => updateField('zipcode', e.target.value)}
               className="mt-2 h-12"
-              placeholder="60642"
+              placeholder=""
               maxLength={5}
             />
           </div>
@@ -512,7 +517,7 @@ Submitted: ${new Date().toLocaleString()}
           </div>
 
           <div>
-            <Label className="text-base mb-4 block">Typical annual income *</Label>
+            <Label className="text-base mb-4 block text-center">Typical annual income *</Label>
             <div className="space-y-2">
               {[
                 'Less than $40,000',
@@ -556,7 +561,7 @@ Submitted: ${new Date().toLocaleString()}
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+              <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <div className="text-sm text-muted-foreground">
               Step {currentStep + 1} of {steps.length}
@@ -651,6 +656,56 @@ Submitted: ${new Date().toLocaleString()}
           </p>
         </div>
       </div>
+
+      {/* Footer */}
+      <footer className="border-t border-border/30 py-12 bg-background">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="font-serif text-xl font-semibold text-primary mb-4">
+                Found & Aligned
+              </div>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Premium matchmaking for people ready to invest in meaningful, value-aligned relationships.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Love, Found & Aligned.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Services</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Connect</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/onboarding" className="hover:text-primary transition-colors">Get Started</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border/30 mt-8 pt-8 text-center text-muted-foreground">
+            <p>&copy; 2025 Found & Aligned. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

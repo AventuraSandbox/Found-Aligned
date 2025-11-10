@@ -4,6 +4,7 @@ import { useEffect } from "react";
 
 const Contact = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Contact — Found & Aligned";
     const desc = "Book a complimentary Discovery Call to explore your alignment";
     let tag = document.querySelector('meta[name="description"]');

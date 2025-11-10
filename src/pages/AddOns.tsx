@@ -3,6 +3,7 @@ import { useEffect } from "react";
 
 const AddOns = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Add-On Services — Found & Aligned";
     const desc = "Additional services to support your journey to intentional love";
     let tag = document.querySelector('meta[name="description"]');

@@ -2,8 +2,13 @@ import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
 import { Heart, Users, MessageCircle, ArrowRight, CheckCircle, Clock, Shield } from "lucide-react";
 import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 const OurApproach = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-background">
       {/* Navigation */}
@@ -17,7 +22,7 @@ const OurApproach = () => {
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/our-approach" className="text-primary font-medium">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/pricing" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+              <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/onboarding">Get Started</Link>
@@ -139,6 +144,56 @@ const OurApproach = () => {
           </div>
         </div>
       </section>
+
+      {/* Footer */}
+      <footer className="border-t border-border/30 py-12 bg-background">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="font-serif text-xl font-semibold text-primary mb-4">
+                Found & Aligned
+              </div>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Premium matchmaking for people ready to invest in meaningful, value-aligned relationships.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Love, Found & Aligned.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Services</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Connect</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/onboarding" className="hover:text-primary transition-colors">Get Started</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border/30 mt-8 pt-8 text-center text-muted-foreground">
+            <p>&copy; 2025 Found & Aligned. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };

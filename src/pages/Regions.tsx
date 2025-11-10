@@ -2,6 +2,7 @@ import { useEffect } from "react";
 
 const Regions = () => {
   useEffect(() => {
+    window.scrollTo(0, 0);
     document.title = "Regions — Found & Aligned";
     const desc = "Curated matchmaking across Illinois, Wisconsin, Michigan, and Indiana";
     let tag = document.querySelector('meta[name="description"]');
