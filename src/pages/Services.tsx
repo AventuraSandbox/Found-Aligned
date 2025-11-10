@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
+import { Check } from "lucide-react";
 
 const Services = () => {
   useEffect(() => {
@@ -38,55 +39,345 @@ const Services = () => {
         </div>
       </nav>
 
-      <section className="pt-24 pb-12">
+      <section className="pt-24 pb-8">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-4">Our Services</h1>
-          <p className="text-lg text-muted-foreground">Personalized matchmaking designed for your unique journey</p>
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-accent mb-6">
+            <span className="text-3xl">👑</span>
+          </div>
+          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-6">Premium Packages</h1>
+          <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
+            Human, discreet, and deeply personalized—never algorithmic. Choose the service level that matches your needs and investment readiness.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
+            <div className="flex items-center gap-2">
+              <Check className="h-4 w-4 text-primary" />
+              <span>Complete Guidance</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="h-4 w-4 text-primary" />
+              <span>Premium Service</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <Check className="h-4 w-4 text-primary" />
+              <span>All+ Focused</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section className="py-8">
-        <div className="max-w-5xl mx-auto px-6 sm:px-8 grid gap-8">
-          <Card className="p-8">
-            <h2 className="font-serif text-2xl font-semibold text-primary mb-2">Discovery Alignment</h2>
-            <p className="text-muted-foreground mb-2">Foundational compatibility and clarity package</p>
-            <p className="text-primary font-semibold mb-6">$750 (one-time)</p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
-              <li>90-minute 1:1 onboarding session</li>
-              <li>Compatibility and attachment-style assessment</li>
-              <li>Personalized "Alignment Blueprint"</li>
-              <li>Inclusion in Found & Aligned match pool</li>
-            </ul>
-            <p className="text-muted-foreground">Ideal For: Professionals exploring matchmaking or seeking clarity on their dating patterns before committing to active matching.</p>
-          </Card>
+      <section className="py-12">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8">
+          <h2 className="font-serif text-3xl font-bold text-center text-primary mb-4">Premium Packages</h2>
+          <p className="text-center text-muted-foreground mb-12">
+            Human, discreet, and deeply personalized—never algorithmic. Choose the service level that matches your needs and investment readiness.
+          </p>
+          
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            {/* Discovery Alignment */}
+            <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
+              <div className="flex-1">
+                <h2 className="font-serif text-2xl font-bold text-primary mb-4">
+                  Discovery Alignment
+                </h2>
+                
+                <p className="text-muted-foreground italic mb-6">
+                  For professionals exploring matchmaking or seeking clarity on their dating patterns before committing to active matching.
+                </p>
+                
+                <div className="mb-6">
+                  <p className="text-4xl font-bold text-primary mb-2">$750</p>
+                  <p className="text-muted-foreground text-sm">Duration: One-time foundational package</p>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="font-semibold text-primary mb-4">What's Included:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">90-minute personalized onboarding session</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Comprehensive compatibility & attachment-style assessment</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Personalized "Alignment Blueprint" report</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Inclusion in Found & Aligned match pool</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Button variant="outline" className="w-full mt-6" asChild>
+                <Link to="/onboarding">Request Private Consultation</Link>
+              </Button>
+            </Card>
 
-          <Card className="p-8">
-            <h2 className="font-serif text-2xl font-semibold text-primary mb-2">Signature Alignment</h2>
-            <p className="text-muted-foreground mb-2">Active matchmaking package</p>
-            <p className="text-primary font-semibold mb-6">$4,800 (6-month program)</p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
-              <li>Dedicated regional matchmaker</li>
-              <li>Up to 3 personalized matches per month (local only)</li>
-              <li>Pre-date alignment coaching and post-date feedback loop</li>
-              <li>Monthly progress sessions</li>
-            </ul>
-            <p className="text-muted-foreground">Ideal For: Busy professionals ready for curated introductions with Midwest-based matches who share their values and lifestyle.</p>
-          </Card>
+            {/* Signature Alignment */}
+            <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
+              <div className="flex-1">
+                <h2 className="font-serif text-2xl font-bold text-primary mb-4">
+                  Signature Alignment
+                </h2>
+                
+                <p className="text-muted-foreground italic mb-6">
+                  For busy professionals ready for curated introductions with Midwest-based matches who share their values and lifestyle.
+                </p>
+                
+                <div className="mb-6">
+                  <p className="text-4xl font-bold text-primary mb-2">$6,500</p>
+                  <p className="text-muted-foreground text-sm">Duration: 6 months</p>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="font-semibold text-primary mb-4">What's Included:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Dedicated regional matchmaker assigned to you</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Up to 18 hand-selected introductions (3/month)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Personal vetting interviews for all potential matches</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Pre-date alignment coaching & preparation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Post-date feedback sessions</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Monthly progress & strategy sessions</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Button variant="outline" className="w-full mt-6" asChild>
+                <Link to="/onboarding">Request Private Consultation</Link>
+              </Button>
+            </Card>
 
-          <Card className="p-8">
-            <h2 className="font-serif text-2xl font-semibold text-primary mb-2">Elevated Alignment</h2>
-            <p className="text-muted-foreground mb-2">Full-service concierge matchmaking and transformation</p>
-            <p className="text-primary font-semibold mb-6">$9,500 (12-month program)</p>
-            <ul className="list-disc pl-6 space-y-2 text-muted-foreground mb-6">
-              <li>3 curated matches per month (regional or national)</li>
-              <li>Dedicated senior matchmaker</li>
-              <li>Image &amp; Presence Coaching (included)</li>
-              <li>Emotional Intelligence Mastery Sessions - 3 sessions (included)</li>
-              <li>Personal Brand Dating Photoshoot (included)</li>
-              <li>Priority access to Found & Aligned Circle events</li>
-            </ul>
-            <p className="text-muted-foreground">Ideal For: High-achieving professionals seeking comprehensive support, personal transformation, and premium concierge-level service.</p>
-          </Card>
+            {/* Elevated Alignment - Most Popular */}
+            <Card className="p-8 flex flex-col border-2 border-primary shadow-xl relative">
+              <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                <span className="bg-primary text-primary-foreground px-4 py-1 rounded-full text-sm font-semibold">
+                  Most Popular
+                </span>
+              </div>
+              
+              <div className="flex-1">
+                <h2 className="font-serif text-2xl font-bold text-primary mb-4">
+                  Elevated Alignment
+                </h2>
+                
+                <p className="text-muted-foreground italic mb-6">
+                  Comprehensive service for established professionals seeking long-term partnership with premium support and personal transformation.
+                </p>
+                
+                <div className="mb-6">
+                  <p className="text-4xl font-bold text-primary mb-2">$18,500</p>
+                  <p className="text-muted-foreground text-sm">Duration: 12 months</p>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="font-semibold text-primary mb-4">What's Included:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Everything in Signature Alignment, plus:</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Expanded 5-state search capabilities (IL, MI, MN, IN, WI)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Dedicated senior matchmaker</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Image & Presence Transformation (included)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Emotional Intelligence Mastery - 4 sessions (included)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Personal Brand Dating Photoshoot (included)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Pre-date coaching & post-date feedback</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">First 90 days relationship support after finding a match</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Priority access to curated events</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Background verification on all matches</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Button variant="default" className="w-full mt-6" asChild>
+                <Link to="/onboarding">Request Private Consultation</Link>
+              </Button>
+            </Card>
+
+            {/* Premier Alignment */}
+            <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
+              <div className="flex-1">
+                <h2 className="font-serif text-2xl font-bold text-primary mb-4">
+                  Premier Alignment
+                </h2>
+                
+                <p className="text-muted-foreground italic mb-6">
+                  Ultra-premium service for high-achieving professionals seeking white-glove concierge matchmaking and comprehensive transformation.
+                </p>
+                
+                <div className="mb-6">
+                  <p className="text-4xl font-bold text-primary mb-2">$35,000</p>
+                  <p className="text-muted-foreground text-sm">Duration: 18 months</p>
+                </div>
+                
+                <div className="mb-6">
+                  <h4 className="font-semibold text-primary mb-4">What's Included:</h4>
+                  <ul className="space-y-3">
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Unlimited introductions for 18 months</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Dedicated senior matchmaker + support team</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Expanded 5-state search with travel coordination</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Executive presence transformation package</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Professional wardrobe consultation (2 sessions)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Premium dating photoshoot (2 sessions - casual & elevated)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Advanced communication & EQ mastery (6 sessions)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Personal brand development</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">VIP concierge dating services (date planning, post-date debriefs, bi-weekly strategy sessions)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">3-month intensive relationship integration coaching</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Deep background verification & reference checks</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Exclusive private matchmaking events access</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">Discretion protocols for public figures</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+              
+              <Button variant="outline" className="w-full mt-6" asChild>
+                <Link to="/onboarding">Request Private Consultation</Link>
+              </Button>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Why Invest Section */}
+      <section className="py-16 bg-muted/30">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <h2 className="font-serif text-3xl font-bold text-center text-primary mb-12">
+            Why Invest in Premium Matchmaking?
+          </h2>
+          <div className="grid md:grid-cols-3 gap-8">
+            <div>
+              <h3 className="font-serif text-xl font-semibold text-primary mb-4">
+                Time is Your Most Valuable Asset
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                At 35+, you've built a successful life. Don't waste time on incompatible matches or endless swiping. We do the work, so you can focus on connection.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-xl font-semibold text-primary mb-4">
+                Discretion & Privacy
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                Your professional reputation matters. Our private, secure platform ensures your personal life stays behind the scenes.
+              </p>
+            </div>
+            <div>
+              <h3 className="font-serif text-xl font-semibold text-primary mb-4">
+                Mature Relationship Priorities
+              </h3>
+              <p className="text-muted-foreground leading-relaxed">
+                We understand the complexities of dating at 35+: family considerations, financial alignment, and finding a lifetime partner with shared values.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* CTA Section */}
+      <section className="py-16">
+        <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <h2 className="font-serif text-3xl font-bold text-primary mb-4">
+            Ready to Find Your Person?
+          </h2>
+          <p className="text-lg text-muted-foreground mb-8">
+            Book a private consultation to discuss which package is right for you. No pressure, just an honest conversation about your goals and our approach.
+          </p>
+          <div className="flex flex-wrap justify-center gap-4">
+            <Button size="lg" asChild>
+              <Link to="/onboarding">Book Private Consultation</Link>
+            </Button>
+            <Button variant="outline" size="lg" asChild>
+              <Link to="/specialized-programs">View Specialized Programs</Link>
+            </Button>
+          </div>
         </div>
       </section>
 

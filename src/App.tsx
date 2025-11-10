@@ -12,6 +12,7 @@ const Index = lazy(() => import("./pages/Index"));
 const OurApproach = lazy(() => import("./pages/OurApproach"));
 const HowItWorks = lazy(() => import("./pages/HowItWorks"));
 const Services = lazy(() => import("./pages/Services"));
+const SpecializedPrograms = lazy(() => import("./pages/SpecializedPrograms"));
 const AddOns = lazy(() => import("./pages/AddOns"));
 const Regions = lazy(() => import("./pages/Regions"));
 const Contact = lazy(() => import("./pages/Contact"));
@@ -43,6 +44,7 @@ const App = () => (
                 <Route path="/our-approach" element={<OurApproach />} />
                 <Route path="/how-it-works" element={<HowItWorks />} />
                 <Route path="/services" element={<Services />} />
+                <Route path="/specialized-programs" element={<SpecializedPrograms />} />
                 <Route path="/add-ons" element={<AddOns />} />
                 <Route path="/regions" element={<Regions />} />
                 <Route path="/contact" element={<Contact />} />
