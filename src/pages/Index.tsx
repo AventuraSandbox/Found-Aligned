@@ -346,7 +346,7 @@ const Index = () => {
                   <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                  <Link to="/specialized-programs" className="hover:text-primary transition-colors">Relationship Coaching</Link>
                 </li>
                 <li>
                   <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>

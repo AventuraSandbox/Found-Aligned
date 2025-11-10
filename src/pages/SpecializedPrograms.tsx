@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
+import { Check, Sparkles } from "lucide-react";
 
 const SpecializedPrograms = () => {
   useEffect(() => {
@@ -44,6 +44,9 @@ const SpecializedPrograms = () => {
       {/* Hero Section */}
       <section className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
+          <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-accent mb-6">
+            <Sparkles className="w-8 h-8 text-primary" />
+          </div>
           <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-6">Specialized Programs</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto">
             Beyond matchmaking, we offer specialized support for the unique challenges and opportunities of dating and relationships at 35-55.
@@ -390,7 +393,7 @@ const SpecializedPrograms = () => {
                   <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                  <Link to="/specialized-programs" className="hover:text-primary transition-colors">Relationship Coaching</Link>
                 </li>
                 <li>
                   <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
