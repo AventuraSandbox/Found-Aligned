@@ -7,7 +7,7 @@ import { Check, Crown } from "lucide-react";
 const Services = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
-    document.title = "Our Services — Found & Aligned";
+    document.title = "Core Programs — Found & Aligned";
     const desc = "Personalized matchmaking designed for your unique journey";
     let tag = document.querySelector('meta[name="description"]');
     if (!tag) {
@@ -30,7 +30,7 @@ const Services = () => {
               <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/services" className="text-primary font-medium">Services</Link>
+              <Link to="/services" className="text-primary font-medium">Core Programs</Link>
               <Link to="/specialized-programs" className="text-muted-foreground hover:text-primary transition-colors">Specialized Programs</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
@@ -411,7 +411,7 @@ const Services = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold text-primary mb-4">Services</h4>
+              <h4 className="font-semibold text-primary mb-4">Core Programs</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
                   <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
