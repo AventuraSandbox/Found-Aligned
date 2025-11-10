@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Check } from "lucide-react";
+import { Check, Crown } from "lucide-react";
 
 const Services = () => {
   useEffect(() => {
@@ -31,6 +31,7 @@ const Services = () => {
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/services" className="text-primary font-medium">Services</Link>
+              <Link to="/specialized-programs" className="text-muted-foreground hover:text-primary transition-colors">Specialized Programs</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/onboarding">Get Started</Link>
@@ -42,11 +43,11 @@ const Services = () => {
       <section className="pt-24 pb-8">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <div className="inline-flex items-center justify-center w-16 h-16 rounded-full bg-gradient-accent mb-6">
-            <span className="text-3xl">👑</span>
+            <Crown className="w-8 h-8 text-primary" />
           </div>
-          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-6">Premium Packages</h1>
+          <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-6">Core Programs</h1>
           <p className="text-lg text-muted-foreground max-w-3xl mx-auto mb-8">
-            Human, discreet, and deeply personalized—never algorithmic. Choose the service level that matches your needs and investment readiness.
+            Human, discreet, and deeply personalized - never algorithmic. Choose the service level that matches your needs and investment readiness.
           </p>
           <div className="flex flex-wrap justify-center gap-4 text-sm text-muted-foreground">
             <div className="flex items-center gap-2">
@@ -59,20 +60,20 @@ const Services = () => {
             </div>
             <div className="flex items-center gap-2">
               <Check className="h-4 w-4 text-primary" />
-              <span>All+ Focused</span>
+              <span>Results-Driven</span>
             </div>
           </div>
         </div>
       </section>
 
       <section className="py-12">
-        <div className="max-w-4xl mx-auto px-6 sm:px-8">
-          <h2 className="font-serif text-3xl font-bold text-center text-primary mb-4">Premium Packages</h2>
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <h2 className="font-serif text-3xl font-bold text-center text-primary mb-4">Core Programs</h2>
           <p className="text-center text-muted-foreground mb-12">
-            Human, discreet, and deeply personalized—never algorithmic. Choose the service level that matches your needs and investment readiness.
+            Human, discreet, and deeply personalized - never algorithmic. Choose the service level that matches your needs and investment readiness.
           </p>
           
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* Discovery Alignment */}
             <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
               <div className="flex-1">
@@ -125,7 +126,7 @@ const Services = () => {
                 </h2>
                 
                 <p className="text-muted-foreground italic mb-6">
-                  For busy professionals ready for curated introductions with Midwest-based matches who share their values and lifestyle.
+                  For busy professionals ready for curated introductions with matches who share their values and lifestyle.
                 </p>
                 
                 <div className="mb-6">
@@ -186,8 +187,12 @@ const Services = () => {
                   Comprehensive service for established professionals seeking long-term partnership with premium support and personal transformation.
                 </p>
                 
+                <p className="text-sm text-muted-foreground mb-4">
+                  <span className="font-semibold">Ideal for:</span> Professionals ages 35-55 ready for curated introductions and dedicated support
+                </p>
+                
                 <div className="mb-6">
-                  <p className="text-4xl font-bold text-primary mb-2">$18,500</p>
+                  <p className="text-4xl font-bold text-primary mb-2">$21,000</p>
                   <p className="text-muted-foreground text-sm">Duration: 12 months</p>
                 </div>
                 
@@ -200,7 +205,7 @@ const Services = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Expanded 5-state search capabilities (IL, MI, MN, IN, WI)</span>
+                      <span className="text-muted-foreground text-sm">Expanded 4-state search capabilities (IL, MI, IN, WI)</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -217,6 +222,10 @@ const Services = () => {
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
                       <span className="text-muted-foreground text-sm">Personal Brand Dating Photoshoot (included)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-muted-foreground text-sm">6-month photo refresh session</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -251,7 +260,11 @@ const Services = () => {
                 </h2>
                 
                 <p className="text-muted-foreground italic mb-6">
-                  Ultra-premium service for high-achieving professionals seeking white-glove concierge matchmaking and comprehensive transformation.
+                  White-glove concierge matchmaking for high-achieving professionals who want dedicated team support, unlimited introductions, and comprehensive transformation throughout their journey to partnership.
+                </p>
+                
+                <p className="text-sm text-muted-foreground mb-4">
+                  <span className="font-semibold">Ideal for:</span> Executives, entrepreneurs, and high-net-worth professionals committed to finding their life partner
                 </p>
                 
                 <div className="mb-6">
@@ -272,7 +285,7 @@ const Services = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Expanded 5-state search with travel coordination</span>
+                      <span className="text-muted-foreground text-sm">Expanded 4-state search with travel coordination</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
@@ -330,7 +343,7 @@ const Services = () => {
       <section className="py-16 bg-muted/30">
         <div className="max-w-6xl mx-auto px-6 sm:px-8">
           <h2 className="font-serif text-3xl font-bold text-center text-primary mb-12">
-            Why Invest in Premium Matchmaking?
+            Why Invest in Core Programs?
           </h2>
           <div className="grid md:grid-cols-3 gap-8">
             <div>

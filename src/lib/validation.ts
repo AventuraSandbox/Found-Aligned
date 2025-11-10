@@ -1,17 +1,15 @@
 import { z } from "zod";
 import { VALIDATION_LIMITS } from "./constants";
+import DOMPurify from "dompurify";
 
-// Simple sanitization utility that doesn't require DOMPurify for now
-// This prevents potential build issues while maintaining security
+// Robust HTML sanitization using DOMPurify
 export const sanitizeHtml = (input: string): string => {
-  // Remove script tags and other potentially dangerous content
-  return input
-    .replace(/<script[^>]*>.*?<\/script>/gi, '')
-    .replace(/<iframe[^>]*>.*?<\/iframe>/gi, '')
-    .replace(/<object[^>]*>.*?<\/object>/gi, '')
-    .replace(/<embed[^>]*>.*?<\/embed>/gi, '')
-    .replace(/javascript:/gi, '')
-    .replace(/on\w+\s*=/gi, '');
+  // Configure DOMPurify to be strict
+  return DOMPurify.sanitize(input, {
+    ALLOWED_TAGS: [], // Strip all HTML tags
+    ALLOWED_ATTR: [], // Strip all attributes
+    KEEP_CONTENT: true, // Keep text content
+  });
 };
 
 // Application form validation schema

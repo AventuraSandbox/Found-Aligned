@@ -23,6 +23,7 @@ const OurApproach = () => {
               <Link to="/our-approach" className="text-primary font-medium">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+              <Link to="/specialized-programs" className="text-muted-foreground hover:text-primary transition-colors">Specialized Programs</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/onboarding">Get Started</Link>

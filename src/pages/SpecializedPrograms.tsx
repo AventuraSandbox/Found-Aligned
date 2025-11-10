@@ -32,6 +32,7 @@ const SpecializedPrograms = () => {
               <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
               <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
               <Link to="/services" className="text-muted-foreground hover:text-primary transition-colors">Services</Link>
+              <Link to="/specialized-programs" className="text-primary font-medium">Specialized Programs</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/onboarding">Get Started</Link>
@@ -171,7 +172,7 @@ const SpecializedPrograms = () => {
                 </p>
                 
                 <div className="mb-6">
-                  <p className="text-4xl font-bold text-primary mb-2">$1,000</p>
+                  <p className="text-4xl font-bold text-primary mb-2">$1,200</p>
                   <p className="text-muted-foreground text-sm">Cadence: 4 sessions over 6 weeks</p>
                 </div>
                 
@@ -315,63 +316,11 @@ const SpecializedPrograms = () => {
               </Button>
             </Card>
 
-            {/* Executive Dating Support */}
+            {/* New Chapter Social Club */}
             <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
               <div className="flex-1">
                 <h2 className="font-serif text-2xl font-bold text-primary mb-4">
-                  Executive Dating Support
-                </h2>
-                
-                <p className="text-muted-foreground italic mb-6">
-                  Continuous personalized support for busy professionals throughout their entire dating journey.
-                </p>
-                
-                <div className="mb-6">
-                  <p className="text-4xl font-bold text-primary mb-2">$500/month</p>
-                  <p className="text-muted-foreground text-sm">Cadence: Ongoing subscription (cancel anytime)</p>
-                </div>
-                
-                <div className="mb-6">
-                  <h4 className="font-semibold text-primary mb-4">What's Included:</h4>
-                  <ul className="space-y-3">
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Weekly check-in calls or messages</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Between-match strategy adjustments & refinement</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Unlimited text/email support for dating questions</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Date reservation assistance & logistics support</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Real-time outfit consultation via text before dates</span>
-                    </li>
-                    <li className="flex items-start gap-2">
-                      <Check className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span className="text-muted-foreground text-sm">Continuous accountability, encouragement & guidance</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-              
-              <Button variant="outline" className="w-full mt-6" asChild>
-                <Link to="/onboarding">Request Private Consultation</Link>
-              </Button>
-            </Card>
-
-            {/* Second Chapter Social Club */}
-            <Card className="p-8 flex flex-col border-2 border-border/50 hover:border-primary/30 transition-all shadow-lg">
-              <div className="flex-1">
-                <h2 className="font-serif text-2xl font-bold text-primary mb-4">
-                  Second Chapter Social Club
+                  New Chapter Social Club
                 </h2>
                 
                 <p className="text-muted-foreground italic mb-6">
