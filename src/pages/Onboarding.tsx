@@ -29,6 +29,7 @@ interface OnboardingData {
   profession: string;
   professionalStatus: string; // Retired, Student, Unemployed, or empty
   annualIncome: string;
+  matchmakingBudget: string;
   
   // Security: Honeypot field (hidden from users, catches bots)
   website?: string;
@@ -58,6 +59,7 @@ const Onboarding = () => {
     profession: "",
     professionalStatus: "",
     annualIncome: "",
+    matchmakingBudget: "",
     website: "" // Honeypot field
   });
 
@@ -134,6 +136,12 @@ const Onboarding = () => {
         }
         return { isValid: true, message: "" };
       
+      case 6:
+        if (!formData.matchmakingBudget) {
+          return { isValid: false, message: "Please select your matchmaking budget range" };
+        }
+        return { isValid: true, message: "" };
+      
       default:
         return { isValid: true, message: "" };
     }
@@ -163,6 +171,7 @@ PROFESSIONAL INFORMATION
 ${data.profession ? `Profession: ${data.profession}` : ''}
 ${data.professionalStatus ? `Status: ${data.professionalStatus}` : ''}
 Annual Income: ${data.annualIncome}
+Matchmaking Budget: ${data.matchmakingBudget}
 
 WHO YOU'RE SEEKING
 ------------------
@@ -536,6 +545,35 @@ Submitted: ${new Date().toLocaleString()}
                   label={income}
                   selected={formData.annualIncome === income}
                   onClick={() => updateField('annualIncome', income)}
+                />
+              ))}
+            </div>
+          </div>
+        </div>
+      )
+    },
+    {
+      title: "Matchmaking Budget",
+      description: "Help us understand your investment level",
+      content: (
+        <div className="space-y-8">
+          <div>
+            <Label className="text-base mb-4 block text-center">Which best describes your budget for matchmaking services? *</Label>
+            <div className="space-y-2">
+              {[
+                'Under $2,000',
+                '$2,000 - $5,000',
+                '$5,000 - $10,000',
+                '$10,000 - $25,000',
+                '$25,000+',
+                'I\'m flexible based on value'
+              ].map((budget) => (
+                <RadioOption
+                  key={budget}
+                  value={budget}
+                  label={budget}
+                  selected={formData.matchmakingBudget === budget}
+                  onClick={() => updateField('matchmakingBudget', budget)}
                 />
               ))}
             </div>
