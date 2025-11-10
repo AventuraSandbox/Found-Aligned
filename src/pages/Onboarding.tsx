@@ -286,14 +286,14 @@ Submitted: ${new Date().toLocaleString()}
       type="button"
       onClick={onClick}
       className={`
-        w-full p-4 text-left rounded-lg border-2 transition-all
+        w-full p-4 text-center rounded-lg border-2 transition-all
         ${selected 
           ? 'border-primary bg-primary/5' 
           : 'border-border hover:border-primary/50 bg-background'
         }
       `}
     >
-      <div className="flex items-center justify-between">
+      <div className="flex items-center justify-center gap-2">
         <span className="font-medium">{label}</span>
         {selected && <Check className="h-5 w-5 text-primary" />}
       </div>
@@ -446,7 +446,7 @@ Submitted: ${new Date().toLocaleString()}
       subtitle: "",
       content: (
         <div className="space-y-6">
-          <div>
+          <div className="max-w-xs mx-auto">
             <Label htmlFor="birthday" className="text-base">Birthday *</Label>
             <Input
               id="birthday"
@@ -467,7 +467,7 @@ Submitted: ${new Date().toLocaleString()}
       subtitle: "We ask so we can make sure we have great matches in your area.",
       content: (
         <div className="space-y-6">
-          <div>
+          <div className="max-w-xs mx-auto">
             <Label htmlFor="zipcode" className="text-base">Zip Code *</Label>
             <Input
               id="zipcode"

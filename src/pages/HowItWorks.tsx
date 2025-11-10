@@ -56,7 +56,7 @@ const HowItWorks = () => {
           </div>
 
           <div className="space-y-6">
-            {/* Step 1 */}
+            {/* Step 1: Discovery */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
@@ -65,8 +65,9 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Discovery: Begin with Understanding
+                  Step 1: Discovery
                 </h3>
+                <p className="font-semibold text-primary mb-4">Begin with Understanding</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
                   We start with a complimentary discovery call to understand your relationship history, values, and vision for partnership. If we're a good fit, you'll complete a comprehensive assessment covering compatibility factors, attachment styles, and what matters most to you in a partner.
                 </p>
@@ -97,7 +98,7 @@ const HowItWorks = () => {
             {/* Connector Line */}
             <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
-            {/* Step 2 */}
+            {/* Step 2: Vetting */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
@@ -106,29 +107,30 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Matching: Thoughtful Introductions, Not Algorithms
+                  Step 2: Vetting
                 </h3>
+                <p className="font-semibold text-primary mb-4">Real People, Real Conversations</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Your dedicated matchmaker personally evaluates every potential match based on emotional alignment, lifestyle compatibility, and shared values. We introduce you to people we genuinely believe could be your person—complete with context about why we think there's potential.
+                  Unlike apps or algorithm-based services, every person in our network is vetted through personal interviews by our matchmakers. We verify background, intentions, and relationship readiness. This ensures you only meet people who are genuinely aligned with what you're seeking and emotionally prepared for partnership.
                 </p>
                 <div className="space-y-3">
                   <p className="font-semibold text-primary mb-3">What happens:</p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Dedicated regional or senior matchmaker assigned</span>
+                      <span>Personal screening interviews with all potential matches</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Hand-selected introductions (no apps, no algorithms)</span>
+                      <span>Background verification and reference checks</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Pre-date coaching and preparation</span>
+                      <span>Assessment of emotional readiness and intentions</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Custom date planning support</span>
+                      <span>Confirmation of lifestyle, values, and relationship goals</span>
                     </li>
                   </ul>
                 </div>
@@ -138,7 +140,7 @@ const HowItWorks = () => {
             {/* Connector Line */}
             <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
-            {/* Step 3 */}
+            {/* Step 3: Matching */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
@@ -147,10 +149,53 @@ const HowItWorks = () => {
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Dating with Support: You are Never Alone in This
+                  Step 3: Matching
                 </h3>
+                <p className="font-semibold text-primary mb-4">Thoughtful Introductions, Not Algorithms</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  After each introduction, we check in to hear how it went. What felt right? What didn't? We use your feedback to continuously refine future matches and provide coaching to help you show up as your best self.
+                  Your dedicated matchmaker personally evaluates every potential match based on emotional alignment, lifestyle compatibility, and shared values. We introduce you to people we genuinely believe could be your person, complete with context about why we think there's potential.
+                </p>
+                <div className="space-y-3">
+                  <p className="font-semibold text-primary mb-3">What happens:</p>
+                  <ul className="space-y-2 text-muted-foreground">
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Dedicated matchmaker assigned (regional or senior level)</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Hand-selected introductions based on deep compatibility</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Pre-date coaching and preparation</span>
+                    </li>
+                    <li className="flex items-start gap-2">
+                      <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span>Context provided about each match and why they're right for you</span>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* Connector Line */}
+            <div className="ml-10 border-l-2 border-border/30 h-6"></div>
+
+            {/* Step 4: Dating with Support */}
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="flex-shrink-0">
+                <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
+                  <span className="text-3xl font-serif font-bold text-primary">04</span>
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
+                  Step 4: Dating with Support
+                </h3>
+                <p className="font-semibold text-primary mb-4">Guided Through Every Step</p>
+                <p className="text-muted-foreground leading-relaxed mb-6">
+                  After each introduction, we check in to hear how it went. What felt right? What didn't? We use your feedback to continuously refine future matches and provide coaching to help you navigate the experience with confidence and clarity.
                 </p>
                 <div className="space-y-3">
                   <p className="font-semibold text-primary mb-3">What happens:</p>
@@ -161,15 +206,15 @@ const HowItWorks = () => {
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Ongoing emotional intelligence coaching</span>
+                      <span>Ongoing relationship coaching</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Match refinement based on real experiences</span>
+                      <span>Match refinement based on your real experiences</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Relationship guidance as things progress</span>
+                      <span>Guidance as connections deepen</span>
                     </li>
                   </ul>
                 </div>
@@ -179,38 +224,39 @@ const HowItWorks = () => {
             {/* Connector Line */}
             <div className="ml-10 border-l-2 border-border/30 h-6"></div>
 
-            {/* Step 4 */}
+            {/* Step 5: Success */}
             <div className="flex flex-col md:flex-row gap-8 items-start">
               <div className="flex-shrink-0">
                 <div className="w-20 h-20 bg-gradient-accent rounded-full flex items-center justify-center">
-                  <span className="text-3xl font-serif font-bold text-primary">04</span>
+                  <span className="text-3xl font-serif font-bold text-primary">05</span>
                 </div>
               </div>
               <div className="flex-1">
                 <h3 className="font-serif text-2xl font-semibold text-primary mb-4">
-                  Growth & Transformation: Beyond Matchmaking
+                  Step 5: Success
                 </h3>
+                <p className="font-semibold text-primary mb-4">Finding Your Person</p>
                 <p className="text-muted-foreground leading-relaxed mb-6">
-                  Whether you're working on your dating presence, processing past relationships, or building confidence, we offer additional support to ensure you're emotionally ready for lasting love.
+                  Our work continues until you find your match. Whether that happens in month two or month six, we're committed to supporting you through the journey. When you find your person, we celebrate with you and offer continued guidance as your relationship grows.
                 </p>
                 <div className="space-y-3">
-                  <p className="font-semibold text-primary mb-3">Optional enhancements include:</p>
+                  <p className="font-semibold text-primary mb-3">What happens:</p>
                   <ul className="space-y-2 text-muted-foreground">
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Image & Presence Coaching</span>
+                      <span>Continued support until you find your match</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Emotional Intelligence Mastery Sessions</span>
+                      <span>Relationship transition coaching</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Personal Brand Photoshoot</span>
+                      <span>Access to our community and resources</span>
                     </li>
                     <li className="flex items-start gap-2">
                       <CheckCircle className="h-5 w-5 text-primary mt-0.5 flex-shrink-0" />
-                      <span>Access to Found & Aligned Circle events</span>
+                      <span>Optional ongoing support for new relationships</span>
                     </li>
                   </ul>
                 </div>
@@ -256,50 +302,50 @@ const HowItWorks = () => {
             {/* FAQ 1 */}
             <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">
-                [FAQ Question 1 - Placeholder]
+                How is Found & Aligned different from dating apps or other matchmaking services?
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                [FAQ Answer 1 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+                Unlike dating apps that rely on algorithms and self-reported profiles, every person in our network is personally vetted through one-on-one interviews by our matchmakers. We verify backgrounds, assess emotional readiness, and confirm relationship intentions before anyone is introduced. Your matches are hand-selected by a dedicated matchmaker who knows you personally, not generated by software. We also provide ongoing coaching and support throughout your journey, making this a true partnership rather than a transactional service.
               </p>
             </Card>
 
             {/* FAQ 2 */}
             <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">
-                [FAQ Question 2 - Placeholder]
+                How long does it typically take to find a match?
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                [FAQ Answer 2 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+                Every journey is unique, but most of our clients meet someone they're genuinely excited about within the first few months. Our programs are designed as 6-month experiences to allow time for multiple introductions, dating, and developing real connections. We're focused on quality over speed. Finding the right person takes time, and we're committed to supporting you until you find your match.
               </p>
             </Card>
 
             {/* FAQ 3 */}
             <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">
-                [FAQ Question 3 - Placeholder]
+                How many people will I meet, and how often?
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                [FAQ Answer 3 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+                Depending on your program, you'll receive between 1 to 3 carefully curated introductions per month. We prioritize quality over quantity. Each introduction is personally selected based on deep compatibility, emotional alignment, and shared values. We'd rather introduce you to three truly compatible people than dozens of mediocre matches. The pacing allows you time to date, reflect, and provide feedback that helps us refine future introductions.
               </p>
             </Card>
 
             {/* FAQ 4 */}
             <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">
-                [FAQ Question 4 - Placeholder]
+                How much does matchmaking cost, and is it worth the investment?
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                [FAQ Answer 4 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+                Our programs range from introductory discovery packages to comprehensive 6-month matchmaking experiences. Investment varies based on the level of service, search scope, and additional support you choose. We discuss pricing during your complimentary discovery call after we understand your specific needs and goals. What we can tell you is this: our clients consistently tell us that finding the right partner was worth every penny, and that the time, energy, and emotional cost of continuing to search alone would have been far greater.
               </p>
             </Card>
 
             {/* FAQ 5 */}
             <Card className="p-8 border-0 shadow-elegant bg-card/50 backdrop-blur-sm">
               <h3 className="font-serif text-xl font-semibold text-primary mb-4">
-                [FAQ Question 5 - Placeholder]
+                Is my participation confidential?
               </h3>
               <p className="text-muted-foreground leading-relaxed">
-                [FAQ Answer 5 - Placeholder text goes here. This section will be customized with your specific frequently asked questions and detailed answers.]
+                Absolutely. Your privacy is our priority. Your search remains completely confidential, and we never share your information without your explicit permission. All members of our network have agreed to our privacy standards. We understand that discretion matters, especially for professionals in visible roles or those navigating sensitive personal situations.
               </p>
             </Card>
           </div>

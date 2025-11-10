@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 
 const Services = () => {
   useEffect(() => {
@@ -17,6 +18,26 @@ const Services = () => {
   }, []);
   return (
     <div className="min-h-screen bg-background">
+      {/* Navigation */}
+      <nav className="border-b border-border/30 bg-background/80 backdrop-blur-sm fixed w-full z-50">
+        <div className="max-w-7xl mx-auto px-6 sm:px-8">
+          <div className="flex justify-between items-center h-16">
+            <Link to="/" className="font-serif text-xl font-semibold text-primary">
+              Found & Aligned
+            </Link>
+            <div className="hidden md:flex space-x-8">
+              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
+              <Link to="/services" className="text-primary font-medium">Services</Link>
+            </div>
+            <Button variant="premium" size="sm" asChild>
+              <Link to="/onboarding">Get Started</Link>
+            </Button>
+          </div>
+        </div>
+      </nav>
+
       <section className="pt-24 pb-12">
         <div className="max-w-4xl mx-auto px-6 sm:px-8 text-center">
           <h1 className="font-serif text-4xl sm:text-5xl font-bold text-primary mb-4">Our Services</h1>
@@ -69,11 +90,53 @@ const Services = () => {
         </div>
       </section>
 
-      <footer className="border-t border-border/30 py-12 bg-background mt-12">
-        <div className="max-w-6xl mx-auto px-6 sm:px-8 text-center text-muted-foreground">
-          <p>© 2025 Found & Aligned. All rights reserved.</p>
-          <p>Serving Illinois, Wisconsin, Michigan, and Indiana</p>
-          <p>hello@foundandaligned.com</p>
+      {/* Footer */}
+      <footer className="border-t border-border/30 py-12 bg-background">
+        <div className="max-w-6xl mx-auto px-6 sm:px-8">
+          <div className="grid md:grid-cols-4 gap-8">
+            <div className="md:col-span-2">
+              <div className="font-serif text-xl font-semibold text-primary mb-4">
+                Found & Aligned
+              </div>
+              <p className="text-muted-foreground mb-4 leading-relaxed">
+                Premium matchmaking for people ready to invest in meaningful, value-aligned relationships.
+              </p>
+              <p className="text-sm text-muted-foreground">
+                Love, Found & Aligned.
+              </p>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Services</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Relationship Coaching</Link>
+                </li>
+                <li>
+                  <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
+                </li>
+              </ul>
+            </div>
+            
+            <div>
+              <h4 className="font-semibold text-primary mb-4">Connect</h4>
+              <ul className="space-y-2 text-muted-foreground">
+                <li>
+                  <Link to="/onboarding" className="hover:text-primary transition-colors">Get Started</Link>
+                </li>
+                <li>
+                  <Link to="/contact" className="hover:text-primary transition-colors">Contact</Link>
+                </li>
+              </ul>
+            </div>
+          </div>
+          
+          <div className="border-t border-border/30 mt-8 pt-8 text-center text-muted-foreground">
+            <p>&copy; 2025 Found & Aligned. All rights reserved.</p>
+          </div>
         </div>
       </footer>
     </div>
