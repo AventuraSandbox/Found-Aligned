@@ -27,11 +27,11 @@ const Services = () => {
               Found & Aligned
             </Link>
             <div className="hidden md:flex space-x-8">
-              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
-              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">Our Approach</Link>
-              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">Process Overview</Link>
-              <Link to="/services" className="text-primary font-medium">Core Programs</Link>
-              <Link to="/specialized-programs" className="text-muted-foreground hover:text-primary transition-colors">Specialized Programs</Link>
+              <Link to="/about" className="text-muted-foreground hover:text-primary transition-colors">Philosophy</Link>
+              <Link to="/how-it-works" className="text-muted-foreground hover:text-primary transition-colors">How It Works</Link>
+              <Link to="/services" className="text-primary font-medium">Signature Programs</Link>
+              <Link to="/specialized-programs" className="text-muted-foreground hover:text-primary transition-colors">Elite Programs</Link>
+              <Link to="/our-approach" className="text-muted-foreground hover:text-primary transition-colors">About</Link>
             </div>
             <Button variant="premium" size="sm" asChild>
               <Link to="/onboarding">Get Started</Link>
@@ -411,7 +411,7 @@ const Services = () => {
             </div>
             
             <div>
-              <h4 className="font-semibold text-primary mb-4">Core Programs</h4>
+              <h4 className="font-semibold text-primary mb-4">Programs</h4>
               <ul className="space-y-2 text-muted-foreground">
                 <li>
                   <Link to="/how-it-works" className="hover:text-primary transition-colors">Discovery Interview</Link>
@@ -420,7 +420,7 @@ const Services = () => {
                   <Link to="/specialized-programs" className="hover:text-primary transition-colors">Relationship Coaching</Link>
                 </li>
                 <li>
-                  <Link to="/services" className="hover:text-primary transition-colors">Programs</Link>
+                  <Link to="/services" className="hover:text-primary transition-colors">All Programs</Link>
                 </li>
               </ul>
             </div>
